@@ -1,3 +1,12 @@
 .app{
     background: #f3f3f3;
+    min-height: 100vh;
+}
+.main{
+    background: #fdfdfd;
+    box-shadow: 0 0 10px #cbc9c9;
+    margin: 0 auto;
+    max-width: 840px;
+    min-width: 420px;
+    width: 70%;
 }
