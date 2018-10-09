@@ -1,0 +1,78 @@
+.article-excerpt{
+    padding: 20px 30px 30px 30px;
+}
+
+.article-excerpt h2 a{
+    color: #2e4d8c;
+    font-size: 30px;
+    text-decoration: none;
+}
+.article-excerpt h2 {
+    display: grid;
+    grid-template-columns: 95% 5%;
+    position: relative;
+}
+.h2-wrapper h2 label[title="Delete article"]{
+    color: red;
+    cursor: pointer;
+    font-size: 32px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+.h2-wrapper h2:hover label[title="Delete article"]{
+    opacity: 1;
+}
+.delete-checkbox{
+    display: none;
+}
+.delete-checkbox ~ .confirm-delete{
+    display: none;
+}
+.delete-checkbox:checked ~ .confirm-delete{
+    display: block;
+}
+.confirm-delete{
+    background: #f8ebeb;
+    border: solid 1px #ebbebe;
+    border-radius: 5px;
+    left: calc(50% - 210px);
+    padding: 15px;
+    position: absolute;
+    text-align: center;
+    top: 100%;
+    width: 420px;
+}
+.confirm-delete p:first-child{
+    color: #F44336;
+    font-size: 18px;
+    font-weight: normal;
+    padding-bottom: 8px;
+}
+.confirm-delete p:nth-child(2n){
+    color: rgb(33, 51, 88);
+    font-size: 16px;
+    font-weight: normal;
+    padding-bottom: 5px;
+}
+.form-buttons{
+    padding: 20px 5px 0 5px;
+}
+.form-buttons button{
+    background: none;
+    border: solid 1px rgba(63, 81, 181, 0.73);
+    border-radius: 2px;
+    color: #3F51B5;
+    cursor: pointer;
+    font-size: 16px;
+}
+.form-buttons button:hover{
+    background: rgba(63, 81, 181, 0.07);
+}
+button.danger{
+    border: solid 1px rgba(154, 5, 0, 0.73);
+    color: #f44336;
+}
+button.danger:hover{
+    background: rgba(243, 17, 10, 0.07);
+}

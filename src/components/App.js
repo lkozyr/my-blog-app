@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './app.css';
 
 import CCHeader from '../containers/CCHeader';
+import CCArticleList from '../containers/CCArticleList';
 
 class App extends Component {
 
@@ -10,6 +11,7 @@ class App extends Component {
 		<div className="app">
 			<CCHeader />
 			<section className="main">
+				<CCArticleList />
 			</section>
 
 		</div>

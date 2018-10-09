@@ -10,3 +10,18 @@
     min-width: 420px;
     width: 70%;
 }
+
+.date{
+    color: gray;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+.text{
+    color: #07124e;
+    font-size: 18px;
+}
+.tags{
+    color: #3c4352;
+    font-size: 14px;
+    padding: 10px 0;
+}
