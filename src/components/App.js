@@ -3,6 +3,7 @@ import './app.css';
 
 import CCHeader from '../containers/CCHeader';
 import CCArticleList from '../containers/CCArticleList';
+import Footer from './Footer';
 
 class App extends Component {
 
@@ -13,7 +14,7 @@ class App extends Component {
 			<section className="main">
 				<CCArticleList />
 			</section>
-
+			<Footer />
 		</div>
 		);
 	}
