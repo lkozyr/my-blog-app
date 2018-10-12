@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './user.css';
 
@@ -32,7 +33,7 @@ class User extends React.Component {
                     </div>
                     
                     { this.props.user.isAdmin 
-                        ? <a href="/new" className="new-article"> New Article </a> 
+                        ? <Link to="/new" className="new-article"> New Article </Link> 
                         : null }
                 </div> );
     }

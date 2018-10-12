@@ -1,9 +1,10 @@
 import * as actions from '../actions/actions';
 
 const defaultState = { 
-    user:               null,
-    searchQuery:        '',
-    articleList:        [],
+    user:                   null,
+    searchQuery:            '',
+    articleList:            [],
+    addArticleResult:       null,
 };
 
 const reducer = (state = defaultState, action) => {
@@ -20,6 +21,8 @@ const reducer = (state = defaultState, action) => {
         articleList = [...state.articleList];
     }
 
+    const addArticleResult = state.addArticleResult;
+
     switch (action.type){
        
         case actions.USER_LOGIN: 
@@ -28,6 +31,7 @@ const reducer = (state = defaultState, action) => {
                 user: { uid: userId, displayName, email, photoURL, isAdmin },
                 searchQuery,
                 articleList,
+                addArticleResult,
             };
         
         case actions.USER_LOGOUT: 
@@ -36,6 +40,7 @@ const reducer = (state = defaultState, action) => {
                 user: nouser, 
                 searchQuery,
                 articleList,
+                addArticleResult,
             };
 
         case actions.SET_ADMIN_PRIVILEDGES:
@@ -45,6 +50,7 @@ const reducer = (state = defaultState, action) => {
                 user, 
                 searchQuery,
                 articleList,
+                addArticleResult,
             };
 
         case actions.SET_SEARCH_QUERY:
@@ -53,6 +59,7 @@ const reducer = (state = defaultState, action) => {
                 user, 
                 searchQuery: query,
                 articleList,
+                addArticleResult,
             };
 
         case actions.GET_ARTICLE_LIST:
@@ -61,6 +68,16 @@ const reducer = (state = defaultState, action) => {
                 user, 
                 searchQuery,
                 articleList: articlesList,
+                addArticleResult,
+            };
+
+        case actions.ADD_ARTICLE_RESULT:
+            const addResult = action.addResult;
+            return { 
+                user, 
+                searchQuery,
+                articleList,
+                addArticleResult: addResult,
             };
 
         default:

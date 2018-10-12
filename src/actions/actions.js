@@ -4,6 +4,7 @@ export const USER_LOGOUT    = 'USER_LOGOUT';
 export const SET_ADMIN_PRIVILEDGES = 'SET_ADMIN_PRIVILEDGES';
 export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
 export const GET_ARTICLE_LIST = 'GET_ARTICLE_LIST';
+export const ADD_ARTICLE_RESULT = 'ADD_ARTICLE_RESULT';
 
 export const userLogin = (user) => ({
     type:           USER_LOGIN,
@@ -32,4 +33,9 @@ export const setSearchQuery = (searchQuery) => ({
 export const getArticleList = (articleList) => ({
     type:           GET_ARTICLE_LIST,
     articleList,
+});
+
+export const addArticle = (addResult) => ({
+    type:           ADD_ARTICLE_RESULT,
+    addResult,
 });

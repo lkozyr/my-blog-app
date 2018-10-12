@@ -57,3 +57,24 @@ export const getArticles = (searchQuery = '', dispatch, getArticleListAction) =>
         return dispatch(getArticleListAction(sortedArticles));
     });
 }
+
+export const addArticle = (article, dispatch, addArticleAction) => {
+    let result = null;
+    const articlesRef = firebase.database().ref('articles/');
+
+    let newArticle = articlesRef.push();
+
+    const { date, title, text, id, userEmail, tags, isActive } = article;
+    newArticle.set({ date, title, text, id, userEmail, tags, isActive },
+        (error) => {
+            if (error){
+                result = 1;
+            } 
+            else{
+                result = 0;
+            }
+            dispatch(addArticleAction(result));
+            window.setTimeout(function(){dispatch(addArticleAction(null))}, 2000);
+        }
+    );
+}
