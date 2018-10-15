@@ -5,6 +5,7 @@ const defaultState = {
     searchQuery:            '',
     articleList:            [],
     addArticleResult:       null,
+    deleteArticleResult:    null,
 };
 
 const reducer = (state = defaultState, action) => {
@@ -22,6 +23,7 @@ const reducer = (state = defaultState, action) => {
     }
 
     const addArticleResult = state.addArticleResult;
+    const deleteArticleResult = state.deleteArticleResult;
 
     switch (action.type){
        
@@ -32,6 +34,7 @@ const reducer = (state = defaultState, action) => {
                 searchQuery,
                 articleList,
                 addArticleResult,
+                deleteArticleResult,
             };
         
         case actions.USER_LOGOUT: 
@@ -41,6 +44,7 @@ const reducer = (state = defaultState, action) => {
                 searchQuery,
                 articleList,
                 addArticleResult,
+                deleteArticleResult,
             };
 
         case actions.SET_ADMIN_PRIVILEDGES:
@@ -51,6 +55,7 @@ const reducer = (state = defaultState, action) => {
                 searchQuery,
                 articleList,
                 addArticleResult,
+                deleteArticleResult,
             };
 
         case actions.SET_SEARCH_QUERY:
@@ -60,6 +65,7 @@ const reducer = (state = defaultState, action) => {
                 searchQuery: query,
                 articleList,
                 addArticleResult,
+                deleteArticleResult,
             };
 
         case actions.GET_ARTICLE_LIST:
@@ -69,6 +75,7 @@ const reducer = (state = defaultState, action) => {
                 searchQuery,
                 articleList: articlesList,
                 addArticleResult,
+                deleteArticleResult,
             };
 
         case actions.ADD_ARTICLE_RESULT:
@@ -78,6 +85,17 @@ const reducer = (state = defaultState, action) => {
                 searchQuery,
                 articleList,
                 addArticleResult: addResult,
+                deleteArticleResult,
+            };
+
+        case actions.DELETE_ARTICLE_RESULT:
+            const deleteResult = action.deleteResult;
+            return { 
+                user, 
+                searchQuery,
+                articleList,
+                addArticleResult,
+                deleteArticleResult: deleteResult,
             };
 
         default:

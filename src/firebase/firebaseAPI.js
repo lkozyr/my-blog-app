@@ -78,3 +78,9 @@ export const addArticle = (article, dispatch, addArticleAction) => {
         }
     );
 }
+
+export const deleteArticle = (articleId) => {
+    //let result = null;
+    const articlesRef = firebase.database().ref(`articles/${articleId}`);
+    articlesRef.set(null);
+}

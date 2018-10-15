@@ -4,7 +4,7 @@ import * as actions from '../actions/actions';
 
 import ArticleList from '../components/ArticleList'; 
 
-import { getArticles } from '../firebase/firebaseAPI';
+import { getArticles, deleteArticle } from '../firebase/firebaseAPI';
 
 const mapStateToProps = (state) => {
     return {
@@ -21,6 +21,12 @@ const asyncGetArticlesActionCreator = (searchQuery) => {
     }
 }
 
+const asyncDeleteArticleActionCreator = (articleId) => {
+    return (dispatch) => {
+        deleteArticle(articleId, dispatch, actions.deleteArticle);
+    }
+}
+
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -30,7 +36,12 @@ const mapDispatchToProps = (dispatch) => {
             console.log('CCHEader: query:', query);
             dispatch(actions.setSearchQuery(query))
         },
-
+        
+        deleteArticle: (articleId, user) => {
+            if (user.isAdmin){
+                dispatch(asyncDeleteArticleActionCreator(articleId) )
+            }
+        },
     }
 }
 

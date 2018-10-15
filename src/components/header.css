@@ -11,14 +11,15 @@
 }
 .app-logo{
 	display: grid;
-	grid-template-columns: 1fr 3fr;
+	grid-template-columns: minmax(120px, 130px) 3fr;
 	min-width: 240px;
 }
 
 .app-logo h1{
 	display: inline;
 	font-family: Pacifico;
-	font-size: 5vw;
+	font-size: calc(18px + 1.5vw);
+	min-width: 125px;
 }
 
 .logo{
