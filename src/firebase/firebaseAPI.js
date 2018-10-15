@@ -1,8 +1,10 @@
 import firebase, { auth, provider } from './firebaseInit.js';
+import { emailToIdentifier } from '../helpers';
 
 export const userLogin = async() => {
     return auth.signInWithPopup(provider) 
         .then((result) => {
+            saveUserInfo(result.user);
             return result.user;
         });
 }
@@ -80,7 +82,21 @@ export const addArticle = (article, dispatch, addArticleAction) => {
 }
 
 export const deleteArticle = (articleId) => {
-    //let result = null;
     const articlesRef = firebase.database().ref(`articles/${articleId}`);
     articlesRef.set(null);
 }
+
+// add user profile info to DB once user logged in (or update if already exists)
+// this is needed to display author (avatar, name) of the comment
+export const saveUserInfo = (user) => {
+    if (!user) {
+        return null;
+    }
+    
+    const usersRef = firebase.database().ref('users');
+    const identifier = emailToIdentifier(user.email); 
+
+    const userObject = {email: user.email, photoURL: user.photoURL, displayName: user.displayName};
+    usersRef.child(identifier).set(userObject);
+}
+
