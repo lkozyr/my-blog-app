@@ -6,6 +6,8 @@ const defaultState = {
     articleList:            [],
     addArticleResult:       null,
     deleteArticleResult:    null,
+    articleDetails:         null,
+    articleComments:        null,
 };
 
 const reducer = (state = defaultState, action) => {
@@ -16,10 +18,16 @@ const reducer = (state = defaultState, action) => {
     }
 
     const searchQuery = state.searchQuery;
+    const articleDetails = Object.assign({}, state.articleDetails);
 
     let articleList = [];
     if (state.articleList) {
         articleList = [...state.articleList];
+    }
+
+    let articleComments = [];
+    if (state.articleComments) {
+        articleComments = [...state.articleComments];
     }
 
     const addArticleResult = state.addArticleResult;
@@ -35,6 +43,8 @@ const reducer = (state = defaultState, action) => {
                 articleList,
                 addArticleResult,
                 deleteArticleResult,
+                articleDetails,
+                articleComments,
             };
         
         case actions.USER_LOGOUT: 
@@ -45,6 +55,8 @@ const reducer = (state = defaultState, action) => {
                 articleList,
                 addArticleResult,
                 deleteArticleResult,
+                articleDetails,
+                articleComments,
             };
 
         case actions.SET_ADMIN_PRIVILEDGES:
@@ -56,6 +68,8 @@ const reducer = (state = defaultState, action) => {
                 articleList,
                 addArticleResult,
                 deleteArticleResult,
+                articleDetails,
+                articleComments,
             };
 
         case actions.SET_SEARCH_QUERY:
@@ -66,6 +80,8 @@ const reducer = (state = defaultState, action) => {
                 articleList,
                 addArticleResult,
                 deleteArticleResult,
+                articleDetails,
+                articleComments,
             };
 
         case actions.GET_ARTICLE_LIST:
@@ -76,6 +92,8 @@ const reducer = (state = defaultState, action) => {
                 articleList: articlesList,
                 addArticleResult,
                 deleteArticleResult,
+                articleDetails,
+                articleComments,
             };
 
         case actions.ADD_ARTICLE_RESULT:
@@ -86,6 +104,8 @@ const reducer = (state = defaultState, action) => {
                 articleList,
                 addArticleResult: addResult,
                 deleteArticleResult,
+                articleDetails,
+                articleComments,
             };
 
         case actions.DELETE_ARTICLE_RESULT:
@@ -96,6 +116,32 @@ const reducer = (state = defaultState, action) => {
                 articleList,
                 addArticleResult,
                 deleteArticleResult: deleteResult,
+                articleDetails,
+                articleComments,
+            };
+
+        case actions.GET_ARTICLE_DETAILS:
+            const artDetails = action.articleDetails;
+            return { 
+                user, 
+                searchQuery,
+                articleList: articlesList,
+                addArticleResult,
+                deleteArticleResult,
+                articleDetails: artDetails,
+                articleComments,
+            };
+
+        case actions.GET_ARTICLE_COMMENTS:
+            const comments = action.articleComments;
+            return { 
+                user, 
+                searchQuery,
+                articleList,
+                addArticleResult,
+                deleteArticleResult,
+                articleDetails,
+                articleComments: comments,
             };
 
         default:

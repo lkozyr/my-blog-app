@@ -100,3 +100,50 @@ export const saveUserInfo = (user) => {
     usersRef.child(identifier).set(userObject);
 }
 
+export const getArticleDetails = (articleId, dispatch, getArticleDetailsAction) => {
+    const articleRef = firebase.database().ref('articles').orderByChild('id').equalTo(articleId);
+    articleRef.on('value', (snapshot) => {
+        let article = {};
+        const existingArticles = snapshot.val();  
+      
+        
+        for (let oneArticle in existingArticles){
+            const id = oneArticle;
+            const { id: articleId, date, isActive, title, text, tags } = existingArticles[oneArticle];
+            article = { articleId, id, date, isActive, title, text, tags };
+        }
+      
+        return dispatch(getArticleDetailsAction(article));
+    });
+}
+
+export const getArticleComments = (articleId, dispatch, getArticleCommentsAction) => {
+
+    const promises = [];
+    const commentsRef = firebase.database().ref('comments').orderByChild('articleId').equalTo(articleId);
+    commentsRef.on('value', (snapshot) => {
+
+        const articleComments = [];
+
+        const comments = snapshot.val();  
+        for (let oneComment in comments){
+            const comment = comments[oneComment];
+            const { articleId, date, text, userEmail } = comment;
+            
+            const userRef = firebase.database().ref('users').orderByChild('email').equalTo(userEmail);
+            const promise = userRef.once('value', (snapshot) => {
+                const user = snapshot.val()[emailToIdentifier(userEmail)];  
+                const { displayName, photoURL } = user;
+
+                articleComments.push({ articleId, date, text, userEmail, displayName, photoURL });
+                return articleComments;
+            });
+            promises.push(promise);
+        }
+
+        Promise.all(promises)
+            .then(() => {
+                dispatch(getArticleCommentsAction( articleComments ));
+            });
+    });
+}

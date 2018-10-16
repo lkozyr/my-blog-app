@@ -28,3 +28,7 @@ export const titleToURL = (title) => {
     }
     return title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s/g, '-') + '-' + random; 
 }
+
+export const emailToIdentifier = (email) => {
+    return email.replace(/@/g, '-').replace(/\./g,'-');
+}

@@ -5,6 +5,7 @@ import './app.css';
 import CCHeader from '../containers/CCHeader';
 import CCArticleList from '../containers/CCArticleList';
 import CCNewArticle from '../containers/CCNewArticle';
+import CCArticleDetails from '../containers/CCArticleDetails';
 import Footer from './Footer';
 
 class App extends Component {
@@ -24,6 +25,10 @@ class App extends Component {
 					<Route
 						path="/new"
 						component={CCNewArticle} />
+
+					<Route
+						path="/read"
+						component={CCArticleDetails} />
 				</Switch>
 			</section>
 
