@@ -15,6 +15,17 @@
     margin: 20px auto;
     max-width: 90%;
 }
+.article-details button{
+    background: none;
+    border: solid 1px rgba(63, 81, 181, 0.07);
+    border-radius: 2px;
+    color: #3F51B5;
+    cursor: pointer;
+    font-size: 16px;
+}
+.article-details button:hover{
+    background: rgba(63, 81, 181, 0.07);
+}
 
 .article-comments{
     padding: 10px 30px;
@@ -53,4 +64,12 @@ time.date{
 .comment{
     color: #07124e;
     font-size: 16px;
+}
+.edit-icon{
+    border-radius: 4px;
+    padding: 3px;
+    width: 22px;
+}
+.edit-icon:hover{
+    background: rgba(141, 206, 168, 0.26);
 }

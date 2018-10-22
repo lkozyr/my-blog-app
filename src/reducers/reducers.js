@@ -8,6 +8,8 @@ const defaultState = {
     deleteArticleResult:    null,
     articleDetails:         null,
     articleComments:        null,
+    addCommentResult:       null,
+    editArticleResult:      null,
 };
 
 const reducer = (state = defaultState, action) => {
@@ -32,6 +34,8 @@ const reducer = (state = defaultState, action) => {
 
     const addArticleResult = state.addArticleResult;
     const deleteArticleResult = state.deleteArticleResult;
+    const addCommentResult = state.addCommentResult;
+    const editArticleResult = state.editArticleResult;
 
     switch (action.type){
        
@@ -45,6 +49,8 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                addCommentResult,
+                editArticleResult,
             };
         
         case actions.USER_LOGOUT: 
@@ -57,6 +63,8 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                addCommentResult,
+                editArticleResult,
             };
 
         case actions.SET_ADMIN_PRIVILEDGES:
@@ -70,6 +78,8 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                addCommentResult,
+                editArticleResult,
             };
 
         case actions.SET_SEARCH_QUERY:
@@ -82,6 +92,8 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                addCommentResult,
+                editArticleResult,
             };
 
         case actions.GET_ARTICLE_LIST:
@@ -94,6 +106,8 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                addCommentResult,
+                editArticleResult,
             };
 
         case actions.ADD_ARTICLE_RESULT:
@@ -106,6 +120,8 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                addCommentResult,
+                editArticleResult,
             };
 
         case actions.DELETE_ARTICLE_RESULT:
@@ -118,6 +134,8 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult: deleteResult,
                 articleDetails,
                 articleComments,
+                addCommentResult,
+                editArticleResult,
             };
 
         case actions.GET_ARTICLE_DETAILS:
@@ -130,6 +148,8 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails: artDetails,
                 articleComments,
+                addCommentResult,
+                editArticleResult,
             };
 
         case actions.GET_ARTICLE_COMMENTS:
@@ -142,6 +162,36 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments: comments,
+                addCommentResult,
+                editArticleResult,
+            };
+        
+        case actions.ADD_COMMENT_RESULT:
+            const result = action.addResult;
+            return { 
+                user, 
+                searchQuery,
+                articleList,
+                addArticleResult,
+                deleteArticleResult,
+                articleDetails,
+                articleComments,
+                addCommentResult: result,
+                editArticleResult,
+            };
+
+        case actions.EDIT_ARTICLE_RESULT:
+            const editRes = action.editResult;
+            return { 
+                user, 
+                searchQuery,
+                articleList,
+                addArticleResult,
+                deleteArticleResult,
+                articleDetails,
+                articleComments,
+                addCommentResult,
+                editArticleResult: editRes,
             };
 
         default:

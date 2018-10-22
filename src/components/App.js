@@ -29,6 +29,11 @@ class App extends Component {
 					<Route
 						path="/read"
 						component={CCArticleDetails} />
+
+					<Route
+						path="/edit"
+						component={CCArticleDetails} />
+
 				</Switch>
 			</section>
 

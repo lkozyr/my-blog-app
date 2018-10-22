@@ -136,7 +136,7 @@ export const getArticleComments = (articleId, dispatch, getArticleCommentsAction
                 const { displayName, photoURL } = user;
 
                 articleComments.push({ articleId, date, text, userEmail, displayName, photoURL });
-                return articleComments;
+                return articleComments.sort((a, b) => b.date - a.date);
             });
             promises.push(promise);
         }
@@ -146,4 +146,46 @@ export const getArticleComments = (articleId, dispatch, getArticleCommentsAction
                 dispatch(getArticleCommentsAction( articleComments ));
             });
     });
+}
+
+export const addComment = (comment, dispatch, addArticleCommentAction) => {
+    let result = null;
+    const commentsRef = firebase.database().ref('comments/');
+
+    let newComment = commentsRef.push();
+
+    const { articleId, date, text, userEmail } = comment;
+    return newComment.set(
+        { articleId, date, text, userEmail }, 
+        (error) => {
+            if (error){
+                result = 1;
+            } 
+            else{
+                result = 0;
+            }
+            dispatch(addArticleCommentAction(result));
+            window.setTimeout(function(){dispatch(addArticleCommentAction(null))}, 2000);
+        }
+    );
+}
+
+export const editArticle = (id, article, dispatch, editArticleAction) => {
+    let result = null;
+    const articleRef = firebase.database().ref(`articles/${id}`);
+
+    let updatedArticle = article;
+
+    articleRef.set(updatedArticle,
+        (error) => {
+            if (error){
+                result = 1;
+            } 
+            else{
+                result = 0;
+            }
+            dispatch(editArticleAction(result));
+            window.setTimeout(function(){dispatch(editArticleAction(null))}, 2000);
+        }
+    );
 }

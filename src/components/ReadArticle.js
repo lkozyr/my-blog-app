@@ -4,6 +4,8 @@ import './read-article.css';
 import { Link } from 'react-router-dom';
 
 import { dateStampToDate } from '../helpers';
+import editIcon from '../assets/img/edit.svg';
+import AddCommentForm from './AddCommentForm';
 
 
 class ReadArticle extends React.Component{
@@ -12,6 +14,7 @@ class ReadArticle extends React.Component{
 
         if ((this.props.articleList && this.props.articleList.length > 0 )
             || (prevProps.location.pathname !== this.props.location.pathname)){
+                console.log('ONNE');
 
             ReactDOM.findDOMNode(this).scrollIntoView( {behavior: "smooth", block: "start"} );
         }
@@ -31,7 +34,19 @@ class ReadArticle extends React.Component{
                     <Link to="/"> Home </Link>
                     <h2>
                         {this.props.articleDetails.title} 
-                    </h2>
+                        {
+                            this.props.user && this.props.user.isAdmin 
+                            ? 
+                                <Link to={`/edit/${this.props.articleDetails.articleId}`}> 
+                                    <img 
+                                        title="Edit article"
+                                        className="edit-icon" 
+                                        src={editIcon} 
+                                        alt="Edit article" />
+                                </Link>
+                            : null
+                        }
+                        </h2>
                     <p className="date">{dateStampToDate(this.props.articleDetails.date)}</p>
                     <p className="text"
                        dangerouslySetInnerHTML={{__html: decodeURI(this.props.articleDetails.text) }}
@@ -39,7 +54,25 @@ class ReadArticle extends React.Component{
                     <p className="tags">{this.props.articleDetails.tags}</p>
                 </div>
 
-                <div className="article-comments">
+                { 
+                    this.props.user
+                    ?
+                        <AddCommentForm 
+                            articleId={this.props.location.pathname.replace('/read/', '')}
+                            userEmail={this.props.user.email}
+                            addComment={this.props.addComment}
+                            addCommentResult={this.props.addCommentResult}/>
+                    :   <div className="article-details">
+                            Please&nbsp;
+                            <button onClick={this.props.handleLoginClick}>Login</button>
+                            &nbsp;to add your comment.
+                        </div>
+                }
+
+                <div className="article-details">
+                    Comments: { this.props.articleComments && this.props.articleComments.length}
+                </div>
+                <div className="article-comments"> 
                     <ul>
                     {
                         this.props.articleComments && this.props.articleComments.map((comment, i) => 

@@ -1,0 +1,56 @@
+.add-comment-form{
+    padding: 20px 30px;
+    position: relative;
+}
+.add-comment-form textarea{
+    font-family: sans-serif;
+    font-size: 16px;
+    min-height: 100px;
+    width: 100%;
+}
+
+.add-comment-form button{
+    background: none;
+    border: solid 1px rgba(63, 81, 181, 0.07);
+    border-radius: 2px;
+    color: #3F51B5;
+    cursor: pointer;
+    font-size: 16px;
+}
+.add-comment-form button:hover{
+    background: rgba(63, 81, 181, 0.07);
+}
+button.danger{
+    border: solid 1px rgba(154, 5, 0, 0.11);
+    color: #f44336;
+}
+button.danger:hover{
+    background: rgba(243, 17, 10, 0.07);
+}
+.add-comment-form button:disabled{
+    border-color: gray;
+    color: gray;
+}
+.add-comment-form button:hover:disabled{
+    background: none;
+    cursor: auto;
+}
+.comment-save-result{
+    border-radius: 2px;
+    color: #fdfdfd;
+    left: 0;
+    margin: 0 20%;
+    text-align: center;
+    padding: 20px 5px;
+    position: absolute;
+    top: calc(40% - 20px);
+    width: 60%;
+}
+.result0{
+    background: #53af80;
+    border: solid 1px #4c8b6b;
+}
+.result1{
+    background: #f76b6b;
+    border: solid 1px red;
+}

@@ -1,0 +1,30 @@
+.edit-article{
+    padding: 20px 30px;
+}
+.edit-result{
+    position: relative;
+}
+.confirm-cancel-wrapper{
+    display: block;
+    position: relative;
+    top: -6em;
+}
+.confirm-cancel-wrapper:empty{
+    display: none;
+}
+.confirm-cancel{
+    background: rgb(191, 217, 202);
+    border: solid 1px #213358;
+    padding: 20px 30px;
+    position: absolute;
+    width: 100%;
+}
+.confirm-cancel p{
+    text-align: center;
+}
+.confirm-cancel button{
+    background: white;
+}
+.confirm-cancel button:hover{
+    background: rgb(238, 242, 252);
+}

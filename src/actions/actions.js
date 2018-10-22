@@ -8,6 +8,8 @@ export const ADD_ARTICLE_RESULT = 'ADD_ARTICLE_RESULT';
 export const DELETE_ARTICLE_RESULT = 'DELETE_ARTICLE_RESULT';
 export const GET_ARTICLE_DETAILS = 'GET_ARTICLE_DETAILS';
 export const GET_ARTICLE_COMMENTS = 'GET_ARTICLE_COMMENTS';
+export const ADD_COMMENT_RESULT = 'ADD_COMMENT_RESULT';
+export const EDIT_ARTICLE_RESULT = 'EDIT_ARTICLE_RESULT';
 
 export const userLogin = (user) => ({
     type:           USER_LOGIN,
@@ -56,4 +58,14 @@ export const getArticleDetails = (article) => ({
 export const getArticleComments = (articleComments) => ({
     type:           GET_ARTICLE_COMMENTS,
     articleComments,
+});
+
+export const addArticleComment = (addResult) => ({
+    type:           ADD_COMMENT_RESULT,
+    addResult,
+});
+
+export const editArticle = (editResult) => ({
+    type:           EDIT_ARTICLE_RESULT,
+    editResult,
 });
