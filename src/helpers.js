@@ -32,3 +32,24 @@ export const titleToURL = (title) => {
 export const emailToIdentifier = (email) => {
     return email.replace(/@/g, '-').replace(/\./g,'-');
 }
+
+const generateRandomIndex = (maxIndex) => {
+    return Math.floor(Math.random() * maxIndex);
+}
+
+export const generateRandomIndexesSet = (maxIndex = 0, length = 3, exclude) => {
+    if (maxIndex === 0){
+        return [];
+    }
+    const indexes = [];
+    while (1) {
+        const index = generateRandomIndex(maxIndex);
+        if (! indexes.some(item => item === index) && index !== exclude){
+            indexes.push(index);
+        }
+        if (indexes.length >= length) {
+            break;
+        }        
+    }
+    return indexes;
+}

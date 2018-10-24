@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './read-article.css';
 import { Link } from 'react-router-dom';
 
-import { dateStampToDate } from '../helpers';
+import { 
+    dateStampToDate,
+    generateRandomIndexesSet 
+} from '../helpers';
 import editIcon from '../assets/img/edit.svg';
 import AddCommentForm from './AddCommentForm';
 import PreviousNextNav from './PreviousNextNav';
+import RandomArticleSuggestions from './RandomArticleSuggestions';
 
 
 class ReadArticle extends React.Component{
@@ -17,6 +21,7 @@ class ReadArticle extends React.Component{
         this.state = {
             prev: null,
             next: null,
+            randomArticleIndexes: [],
         }; 
     }
     
@@ -37,6 +42,10 @@ class ReadArticle extends React.Component{
             console.log('ONE', prevArticleId, articleId);
 
                 const index = this.props.articleList.findIndex(a => a.articleId === articleId);
+
+                this.setState({
+                    randomArticleIndexes: generateRandomIndexesSet(this.props.articleList.length - 1, undefined, index) 
+                });
 
                 switch (index){
                     case 0: 
@@ -116,6 +125,10 @@ class ReadArticle extends React.Component{
                 <PreviousNextNav 
                     previous={this.state.prev}
                     next={this.state.next}/>
+
+                <RandomArticleSuggestions
+                    articleList={this.props.articleList}
+                    randomArticleIndexes={this.state.randomArticleIndexes} />
 
                 { 
                     this.props.user

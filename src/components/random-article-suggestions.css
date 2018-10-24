@@ -1,0 +1,34 @@
+.random-article-suggestions{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px 30px;
+    width: 100%;
+}
+.random-article-suggestions h3{
+    font-size: 18px;
+    margin: 5px;
+    width: 100%;
+}
+.random-article{
+    align-items: center;
+    background: white;
+    border: solid 1px gray;
+    border-top: solid 8px rgb(83, 175, 128);
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    min-width: 125px;
+    padding: 10px;
+    text-align: center;
+}
+.random-article:nth-child(2n+1){
+    margin: 0 10px;
+}
+.random-article a{
+    color: rgb(33, 51, 88);
+    text-decoration: none;
+}
+.random-article:hover{
+    background: rgb(195, 226, 208);;
+}
