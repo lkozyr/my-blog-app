@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './footer.css';
 
 const Footer = (props) => {
@@ -6,9 +7,9 @@ const Footer = (props) => {
     return (
         <footer className="footer">
             <ul>
-                <li><a href="/footer-link1">Some item</a> |</li>
-                <li><a href="/footer-link2">Second item</a> |</li>
-                <li><a href="/footer-link3">And third</a> |</li>
+                <li><Link to="/footer-link1">Some item</Link> |</li>
+                <li><Link to="/footer-link2">Second item</Link> |</li>
+                <li><Link to="/footer-link3">And third</Link> |</li>
             </ul>
         </footer>
     ); 

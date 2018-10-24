@@ -6,6 +6,7 @@ import CCHeader from '../containers/CCHeader';
 import CCArticleList from '../containers/CCArticleList';
 import CCNewArticle from '../containers/CCNewArticle';
 import CCArticleDetails from '../containers/CCArticleDetails';
+import About from './About';
 import Footer from './Footer';
 
 class App extends Component {
@@ -32,6 +33,14 @@ class App extends Component {
 
 					<Route
 						path="/edit"
+						component={CCArticleDetails} />
+
+					<Route
+						path="/about"
+						component={About} />
+
+					<Route
+						path="/contact"
 						component={CCArticleDetails} />
 
 				</Switch>

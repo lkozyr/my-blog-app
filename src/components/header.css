@@ -12,19 +12,48 @@
 .app-logo{
 	display: grid;
 	grid-template-columns: minmax(120px, 130px) 3fr;
+	grid-template-rows: 13vh 4vh;
 	min-width: 240px;
 }
-
-.app-logo h1{
-	display: inline;
-	font-family: Pacifico;
-	font-size: calc(18px + 1.5vw);
-	min-width: 125px;
+.app-logo a{
+	text-decoration: none;
 }
 
+.app-logo a h1{
+	color: white;
+	display: inline;
+	font-family: Pacifico;
+	font-size: calc(28px + 0.75vw);
+	min-width: 125px;
+}
+.app-logo-link{
+	grid-row: span 2;
+}
 .logo{
 	margin: 10px;
     width: 100px;
+}
+.app-nav-links{
+	display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.app-nav-links a{
+	background: rgb(83, 175, 128);
+	border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+	color: white;
+	display: grid;
+	height: 24px;
+    margin:7px 3px 0 0;
+	padding: 0 10px;
+    place-items: center;
+}
+.app-nav-links a h3{
+	font-size: 14px;
+    font-weight: normal;
+	margin: 0;
+    padding: 0;
 }
 
 @media (min-width: 700px){

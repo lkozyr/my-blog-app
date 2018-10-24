@@ -10,10 +10,14 @@ const Header = (props) => {
     return (
         <header className="app-header">
             <div className="app-logo">
-                <Link to="/">
+                <Link to="/" className="app-logo-link">
                     <img className="logo" src={LogoImage} alt="my-blog-app" />
                 </Link>
-                <h1>my-blog-app</h1>
+                <Link to="/"><h1>my-blog-app</h1></Link>
+                <div className="app-nav-links">
+                    <Link to="/about"><h3>About me</h3></Link>
+                    <Link to="/contact"><h3>Contact</h3></Link>
+                </div>
             </div>
             <User 
                 user={props.user}
