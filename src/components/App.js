@@ -7,6 +7,7 @@ import CCArticleList from '../containers/CCArticleList';
 import CCNewArticle from '../containers/CCNewArticle';
 import CCArticleDetails from '../containers/CCArticleDetails';
 import About from './About';
+import Contact from './Contact';
 import Footer from './Footer';
 
 class App extends Component {
@@ -41,7 +42,7 @@ class App extends Component {
 
 					<Route
 						path="/contact"
-						component={CCArticleDetails} />
+						component={Contact} />
 
 				</Switch>
 			</section>

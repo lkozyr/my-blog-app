@@ -1,0 +1,30 @@
+.contact{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 76vh;
+    padding: 20px 30px;
+}
+.contact h2{
+    font-family: Pacifico;
+    font-size: 36px;
+    text-align: center;
+}
+.contact ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.contact ul li{
+    margin: 0 10px;
+}
+.contact ul li a{
+    background: rgba(33, 51, 88, 0.059);
+    border: solid 2px rgba(33, 51, 88, 0.54);
+    border-radius: 50%;
+    display: grid;
+    height: 56px;
+    place-items: center;
+    width: 56px;
+}
