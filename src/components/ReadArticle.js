@@ -6,15 +6,70 @@ import { Link } from 'react-router-dom';
 import { dateStampToDate } from '../helpers';
 import editIcon from '../assets/img/edit.svg';
 import AddCommentForm from './AddCommentForm';
+import PreviousNextNav from './PreviousNextNav';
 
 
 class ReadArticle extends React.Component{
+
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            prev: null,
+            next: null,
+        }; 
+    }
     
     componentDidUpdate(prevProps) {
 
-        if ((this.props.articleList && this.props.articleList.length > 0 )
-            || (prevProps.location.pathname !== this.props.location.pathname)){
-                console.log('ONNE');
+        if (this.props.match.path.replace('/','') === 'edit'){
+            return;
+        }
+
+        const prevArticleId = prevProps.location.pathname.replace('/read/', '');
+        const articleId = this.props.location.pathname.replace('/read/', '');
+
+        if ((this.props.articleList && this.props.articleList.length > 0 
+            && !((this.state.prev && this.state.prev.title) || (this.state.next && this.state.next.title)) )
+            || (prevProps.location.pathname !== this.props.location.pathname)
+            || (prevArticleId !== articleId)){
+                
+            console.log('ONE', prevArticleId, articleId);
+
+                const index = this.props.articleList.findIndex(a => a.articleId === articleId);
+
+                switch (index){
+                    case 0: 
+                        this.setState({
+                            next: null,
+                            prev: { 
+                                title: this.props.articleList[index+1].title,
+                                url: this.props.articleList[index+1].articleId,
+                            }
+                        });
+                        break;
+                    case this.props.articleList.length - 1: 
+                        this.setState({
+                            next: { 
+                                title: this.props.articleList[index-1].title,
+                                url: this.props.articleList[index-1].articleId,
+                            },
+                            prev: null
+                        });
+                        break;
+                    default:
+                        this.setState({
+                            next: { 
+                                title: this.props.articleList[index-1].title,
+                                url: this.props.articleList[index-1].articleId,
+                            },
+                            prev: { 
+                                title: this.props.articleList[index+1].title,
+                                url: this.props.articleList[index+1].articleId,
+                            }
+                        }
+                    );
+                }
 
             ReactDOM.findDOMNode(this).scrollIntoView( {behavior: "smooth", block: "start"} );
         }
@@ -22,6 +77,10 @@ class ReadArticle extends React.Component{
 
     componentDidMount(){
         ReactDOM.findDOMNode(this).scrollIntoView( {behavior: "smooth", block: "start"} );
+
+        // if (this.props.articleList && this.props.articleList.length === 0){
+        //     this.props.getArticleList(this.props.searchQuery);
+        // }
     }
 
 
@@ -53,6 +112,10 @@ class ReadArticle extends React.Component{
                     ></p>
                     <p className="tags">{this.props.articleDetails.tags}</p>
                 </div>
+
+                <PreviousNextNav 
+                    previous={this.state.prev}
+                    next={this.state.next}/>
 
                 { 
                     this.props.user

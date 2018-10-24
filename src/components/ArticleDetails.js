@@ -29,6 +29,11 @@ class ArticleDetails extends React.Component{
         if (mode === 'read'){
             this.props.getArticleComments(articleId);
         }
+
+        // 5. get articleList if it's missing
+        if (!(this.props.articleList && this.props.articleList.length > 0)){
+            this.props.getArticleList(this.props.searchQuery);
+        }
     }
 
 
@@ -56,6 +61,10 @@ class ArticleDetails extends React.Component{
             }
         }
 
+        // get articleList if it's missing
+        if (!(this.props.articleList && this.props.articleList.length > 0)){
+            this.props.getArticleList(this.props.searchQuery);
+        }
 
         // if editArticleResult has been changed, show edit result and switch to read mode:
         if (prevProps.editArticleResult !== this.props.editArticleResult &&
@@ -86,9 +95,11 @@ class ArticleDetails extends React.Component{
                     addCommentResult={this.props.addCommentResult}
                     articleComments={this.props.articleComments}
                     articleDetails={this.props.articleDetails}
+                    articleList={this.props.articleList}
                     handleLoginClick={this.props.handleLoginClick} 
                     location={this.props.location}
                     match={this.props.match}
+                    searchQuery={this.props.searchQuery}
                     user={this.props.user} />
             )
         }
