@@ -99,7 +99,7 @@ class ReadArticle extends React.Component{
         return (
             <React.Fragment>
                 <div className="article-details">
-                    <Link to="/"> Home </Link>
+                    <Link className="home-btn" to="/"> Home </Link>
                     <h2>
                         {this.props.articleDetails.title} 
                         {

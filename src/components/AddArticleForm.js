@@ -62,7 +62,7 @@ class AddArticleForm extends React.Component {
                 <div className="add-article-form">
                     <div className="sorry">
                         You cannot add articles in this blog.&nbsp;
-                        <Link to="/">Home</Link>
+                        <Link className="home-btn" to="/">Home</Link>
                     </div>
                 </div>
             );
@@ -70,11 +70,13 @@ class AddArticleForm extends React.Component {
         if (this.props.user && this.props.user.isAdmin){
             return (
                 <React.Fragment>
-                    <Link to="/"> Home </Link>
                     <form 
                         className="add-article-form" 
                         onSubmit={this.handleAddArticleClick}
                         ref={this.newArticleFormRef}>
+
+                        <Link className="home-btn" to="/"> Home </Link>
+                        
                         <div>
                             <label htmlFor="titleInput">Title: </label>
                             <input className="title-input" type="text" id="titleInput" tabIndex="1" />

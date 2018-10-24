@@ -125,7 +125,7 @@ class EditArticle extends React.Component {
        
             return (
                 <React.Fragment>
-                    <Link to="/"> Home </Link>
+                    <Link className="home-btn" to="/"> Home </Link>
                     <form 
                         className="edit-article" 
                         onSubmit={this.handleSaveArticleClick}

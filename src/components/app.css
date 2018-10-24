@@ -30,3 +30,13 @@
     grid-template-columns: auto auto;
     justify-content: space-between;
 }
+.home-btn{
+    border: solid 1px rgb(33, 51, 88);
+    border-radius: 3px;
+    color: rgb(33, 51, 88);
+    padding: 3px 5px;
+    text-decoration: none;
+}
+.home-btn:hover{
+    background: rgb(235, 252, 235);;
+}
