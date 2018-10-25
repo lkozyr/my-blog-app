@@ -3,12 +3,14 @@
 Check [live demo](https://liu-blog-app.firebaseapp.com).
 
 
-## Build with:
+
+## Built with:
 
  - React
  - Redux, Redux Thunk
  - Firebase
  - React Rich Text Editor ([npm package](https://www.npmjs.com/package/react-rte))
+
 
 
 ## Features:
@@ -22,9 +24,11 @@ Check [live demo](https://liu-blog-app.firebaseapp.com).
 
 
 
+
 ## Authentications options available so far:
 
  - Google authentication
+
 
 
 ## Getting Started
@@ -118,6 +122,7 @@ npm start
 * **Liubov Kozyr** - [Github](https://github.com/lkozyr/)
 
 
+
 ## Assets used in the app:
 
 1. Images:
@@ -136,6 +141,7 @@ npm start
  - [1](https://fonts.googleapis.com/css?family=Pacifico)
 
 
+
  ## Nice to have features:
 
  - Add 'Stars' info to every article (aka 'Likes')
@@ -148,5 +154,3 @@ npm start
  - search results page should have its own URL (/search?q=cat)
  - set search query to local storage
  - add loader (for getArticles, getArticleDetails)
- - bug: images in edit mode are too big in text area
- - bug: mobile version looks bad, need to fix

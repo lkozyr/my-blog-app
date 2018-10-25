@@ -36,6 +36,7 @@ class EditArticle extends React.Component {
             rteValue: value,
             dataEdited: true, 
         });
+        this.fixImagesWidthInRTE();
     }
 
     onTagsChange = (e) => {
@@ -79,6 +80,35 @@ class EditArticle extends React.Component {
         this.props.switchToReadMode(this.state.articleId);
     }
 
+    // images in RTE should have width = 100% of RTE width
+    // with current RTE realization, image has its original width,
+    // which is often larger than RTE width
+    fixImagesWidthInRTE = () => {
+        const rtEditor = document.querySelector('.DraftEditor-root');
+        const editorWidth = rtEditor.getBoundingClientRect().width;
+
+        const images = Array.from(document.querySelectorAll('span.ImageSpan__root___RoAqL'));
+        images.map(im => {
+            const w = im.getBoundingClientRect().width;
+
+            if (w > editorWidth){
+                const h = im.getBoundingClientRect().height;
+
+                const newW = Math.floor(editorWidth * 0.95);
+                const newH = Math.floor(h * newW / w);
+
+                const bgIm = im.style.backgroundImage;
+
+                im.setAttribute('style', `
+                    background-image:${bgIm}; 
+                    background-size: contain !important;
+                    height: ${newH}px !important;
+                    width: ${newW}px; !important`);
+            }
+            return im;
+        });
+    }
+
     componentDidUpdate(prevProps){
         if (this.props.articleDetails && prevProps.articleDetails &&
             this.props.articleDetails.articleId !== prevProps.articleDetails.articleId){
@@ -103,7 +133,8 @@ class EditArticle extends React.Component {
                 id: this.props.articleDetails.id,
                 articleId: this.props.articleDetails.articleId,
             });
-            
+
+            this.fixImagesWidthInRTE();
             return;
         }
         
@@ -126,6 +157,7 @@ class EditArticle extends React.Component {
             return (
                 <React.Fragment>
                     <form 
+                        onMouseEnter={this.fixImagesWidthInRTE}                           
                         className="edit-article" 
                         onSubmit={this.handleSaveArticleClick}
                         ref={this.editArticleFormRef}>
