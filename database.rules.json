@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "articles": {
+      ".read": "true",
+      ".write": "auth !== null && auth.email == 'liupoint@gmail.com'",
+      ".indexOn": "id"
+    },
+    "comments": {
+      ".read": "true",
+      ".write": "auth != null",
+      ".indexOn": "articleId"
+    },
+    "admin": {
+      ".read": "auth != null",
+      ".write": "false"
+    },
+    "users": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": "email"
+    }
+  }
+}

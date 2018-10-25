@@ -1,5 +1,6 @@
 
 # Simple blog web application.
+Check [live demo](https://liu-blog-app.firebaseapp.com).
 
 
 ## Build with:
@@ -12,9 +13,13 @@
 
 ## Features:
 
-Everyone can read articles.
-Only authenticated users can comment articles.
-Only admin user can add new articles, edit or delete existing ones.
+ - Everyone can read articles.
+ - Only authenticated users can comment articles.
+ - Only admin user can add new articles, edit or delete existing ones.
+ - Rich text editor allows to create formatted article text.
+ - Article can contain an image (image URL is required).
+ - User can search articles containing specific keywords.
+
 
 
 ## Authentications options available so far:
@@ -111,3 +116,37 @@ npm start
 ## Author
 
 * **Liubov Kozyr** - [Github](https://github.com/lkozyr/)
+
+
+## Assets used in the app:
+
+1. Images:
+
+ - [1](https://www.iconfinder.com/icons/1061161/journey_moleskine_notepad_notes_pencil_travel_write_icon)
+ - [2](https://www.iconfinder.com/icons/115695/find_magnifying_glass_search_zoom_icon)
+ - [3](https://www.iconfinder.com/icons/290134/draw_edit_pen_pencil_write_icon)
+ - [4](https://www.iconfinder.com/icons/216078/facebook_social_icon)
+ - [5](https://www.iconfinder.com/icons/104501/bird_twitter_icon)
+ - [6](https://www.iconfinder.com/icons/394189/code_github_repository_icon)
+ - [7](https://www.iconfinder.com/icons/1814108/email_envenlope_letter_mail_icon)
+
+
+2. Fonts: 
+
+ - [1](https://fonts.googleapis.com/css?family=Pacifico)
+
+
+ ## Nice to have features:
+
+ - Add 'Stars' info to every article (aka 'Likes')
+ - Tags should be parsed and clickable
+ - Add teaser image to show in the articles list
+ - Add logic for 'isPublished' checkbox
+ - Login with FB, Twitter, username and password
+ - Add prop types
+ - Add pagination / lazyload
+ - search results page should have its own URL (/search?q=cat)
+ - set search query to local storage
+ - add loader (for getArticles, getArticleDetails)
+ - bug: images in edit mode are too big in text area
+ - bug: mobile version looks bad, need to fix
