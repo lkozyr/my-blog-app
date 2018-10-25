@@ -4,7 +4,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    min-height: 76vh;
+    min-height: 83.4vh;
     padding: 20px 30px;
 }
 .photo{
@@ -29,4 +29,10 @@
 .description h4{
     font-size: 20px;
     text-align: center;
+}
+
+@media screen and (min-width: 439px) {
+    .about{
+        min-height: 76vh;
+    }
 }

@@ -6,24 +6,24 @@
 	color: white;
 	display: grid;
 	grid-template-columns: auto auto;
-	height: 17vh;
+	min-height: 8vh;
 	position: relative;
 }
 .app-logo{
 	display: grid;
 	grid-template-columns: minmax(120px, 130px) 3fr;
-	grid-template-rows: 13vh 4vh;
-	min-width: 240px;
+	grid-template-rows: 8vh;
 }
 .app-logo a{
 	text-decoration: none;
 }
+.app-title{
+	display:none;
+}
 
 .app-logo a h1{
 	color: white;
-	display: inline;
 	font-family: Pacifico;
-	font-size: calc(28px + 0.75vw);
 	min-width: 125px;
 }
 .app-logo-link{
@@ -31,13 +31,12 @@
 }
 .logo{
 	margin: 10px;
-    width: 100px;
+    width: 48px;
 }
 .app-nav-links{
-	display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+	display: none;
 }
+
 .app-nav-links a{
 	background: rgb(83, 175, 128);
 	border-top-left-radius: 4px;
@@ -56,8 +55,40 @@
     padding: 0;
 }
 
-@media (min-width: 700px){
-	.app-logo h1{
+
+@media screen and (min-width: 439px) {
+    .app-title{
+		display: block;
+	}
+	.app-nav-links{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+	.app-header {
+		min-height: 17vh;
+	}
+	.app-logo{
+		grid-template-rows: 13vh 4vh;
+		min-width: 240px;
+	}
+	.logo{
+		width: 100px;
+	}
+} 
+
+@media screen and (min-width: 440px) and (max-width: 479px) {
+    .app-logo a h1{
+		font-size: 28px;
+	}
+} 
+@media screen and (min-width: 480px) and (max-width: 559px) {
+    .app-logo a h1{
+		font-size: 32px;
+	}
+} 
+@media screen and (min-width: 560px) {
+    .app-logo a h1{
 		font-size: 36px;
 	}
 } 

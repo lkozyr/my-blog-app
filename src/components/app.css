@@ -1,14 +1,15 @@
 .app{
     background: #f3f3f3;
     min-height: 100vh;
+    width: 100%;
 }
 .main{
     background: #fdfdfd;
     box-shadow: 0 0 10px #cbc9c9;
     margin: 0 auto;
-    max-width: 840px;
-    min-width: 420px;
-    width: 70%;
+    max-width: 964px;
+    min-width: 360px;
+    width: 100%;
 }
 
 .date{
@@ -40,3 +41,9 @@
 .home-btn:hover{
     background: rgb(235, 252, 235);;
 }
+
+@media (min-width: 420px) {
+    .main{
+        width: 70%;
+    }
+} 

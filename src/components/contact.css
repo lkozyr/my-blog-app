@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 76vh;
+    min-height: 83.4vh;
     padding: 20px 30px;
 }
 .contact h2{
@@ -15,9 +15,10 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 .contact ul li{
-    margin: 0 10px;
+    margin: 10px;
 }
 .contact ul li a{
     background: rgba(33, 51, 88, 0.059);
@@ -27,4 +28,10 @@
     height: 56px;
     place-items: center;
     width: 56px;
+}
+
+@media screen and (min-width: 439px) {
+    .contact{
+        min-height: 76vh;
+    }
 }

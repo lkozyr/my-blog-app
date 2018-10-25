@@ -1,6 +1,9 @@
 .edit-article{
     padding: 20px 30px;
 }
+.edit-article > div{
+    margin-top: 20px;
+}
 .edit-result{
     position: relative;
 }

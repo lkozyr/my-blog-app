@@ -13,7 +13,7 @@ const Header = (props) => {
                 <Link to="/" className="app-logo-link">
                     <img className="logo" src={LogoImage} alt="my-blog-app" />
                 </Link>
-                <Link to="/"><h1>my-blog-app</h1></Link>
+                <Link className="app-title" to="/"><h1>my-blog-app</h1></Link>
                 <div className="app-nav-links">
                     <Link to="/about"><h3>About me</h3></Link>
                     <Link to="/contact"><h3>Contact</h3></Link>

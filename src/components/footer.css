@@ -2,20 +2,19 @@
     background-color: rgb(33, 51, 88);
     height: 7vh;
     padding: 1em;
+    min-width: 360px;
     width: 100%;
 }
 .footer ul{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 0 auto;
-    max-width: 840px;
-    min-width: 420px;
-    width: 70%;
+    width: 98%;
 }
 footer li{
-    padding: 0 1em;
+    padding: 0 0.5em;
 }
 .footer a{
     color: white;

@@ -1,8 +1,14 @@
 .article-list{
-    min-height: 76vh;
+    min-height: 83.4vh;
 }
 .sorry{
     margin: 100px 0;
     text-align: center;
     width: 100%;
+}
+
+@media screen and (min-width: 439px) {
+    .article-list{
+        min-height: 76vh;
+    }
 }
