@@ -24,6 +24,7 @@
 .app-logo a h1{
 	color: white;
 	font-family: Pacifico;
+	font-size: 26px;
 	min-width: 125px;
 }
 .app-logo-link{
@@ -56,7 +57,7 @@
 }
 
 
-@media screen and (min-width: 439px) {
+@media screen and (min-width: 440px) {
     .app-title{
 		display: block;
 	}
@@ -79,7 +80,7 @@
 
 @media screen and (min-width: 440px) and (max-width: 479px) {
     .app-logo a h1{
-		font-size: 28px;
+		font-size: 27px;
 	}
 } 
 @media screen and (min-width: 480px) and (max-width: 559px) {

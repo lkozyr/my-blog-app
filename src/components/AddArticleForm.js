@@ -27,12 +27,12 @@ class AddArticleForm extends React.Component {
         
 
         const date = Date.now();
-        const title = e.target.children[0].children[1].value;
+        const title = e.target.children[1].children[1].value;
         const text = encodeURI(this.state.value.toString('html'));
         const id = titleToURL(title);
         const userEmail = this.props.user.email;
-        const tags = e.target.children[2].children[1].value;
-        const isActive = e.target.children[3].children[0].checked;
+        const tags = e.target.children[3].children[1].value;
+        const isActive = e.target.children[4].children[0].checked;
 
         this.props.addArticle({ date, title, text, id, userEmail, tags, isActive }, this.props.user);
     }
