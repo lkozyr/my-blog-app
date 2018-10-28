@@ -141,12 +141,16 @@ class EditArticle extends React.Component {
     }
 
     render() {
+        const homeURL = this.props.searchQuery.length > 0 
+                        ? `/search?q=${this.props.searchQuery}`
+                        : '/';
+
         if (this.props.user && !this.props.user.isAdmin){
             return (
                 <div className="edit-article-form">
                     <div className="sorry">
                         You cannot edit articles in this blog.&nbsp;
-                        <Link to="/">Home</Link>
+                        <Link to={homeURL}>Home</Link>
                     </div>
                 </div>
             );
@@ -161,7 +165,7 @@ class EditArticle extends React.Component {
                         className="edit-article" 
                         onSubmit={this.handleSaveArticleClick}
                         ref={this.editArticleFormRef}>
-                        <Link className="home-btn" to="/"> Home </Link>
+                        <Link className="home-btn" to={homeURL}> Home </Link>
                         <div>
                             <label htmlFor="titleInput">Title: </label>
                             <input 

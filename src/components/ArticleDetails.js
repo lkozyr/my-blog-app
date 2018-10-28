@@ -110,6 +110,7 @@ class ArticleDetails extends React.Component{
                     editArticle={this.props.editArticle}
                     editArticleResult={this.props.editArticleResult}
                     location={this.props.location}
+                    searchQuery={this.props.searchQuery}
                     switchToReadMode={this.switchToReadMode}
                     user={this.props.user} />
             )

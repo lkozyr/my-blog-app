@@ -38,46 +38,54 @@ class ReadArticle extends React.Component{
             && !((this.state.prev && this.state.prev.title) || (this.state.next && this.state.next.title)) )
             || (prevProps.location.pathname !== this.props.location.pathname)
             || (prevArticleId !== articleId)){
-                
-            console.log('ONE', prevArticleId, articleId);
-
                 const index = this.props.articleList.findIndex(a => a.articleId === articleId);
 
-                this.setState({
-                    randomArticleIndexes: generateRandomIndexesSet(this.props.articleList.length - 1, undefined, index) 
-                });
+                const randomIndexes = generateRandomIndexesSet(this.props.articleList.length - 1, undefined, index);
+                if(randomIndexes.length > 0){
+                    this.setState({ randomArticleIndexes: randomIndexes });
+                }
 
+                let next = null, 
+                    prev = null;
                 switch (index){
                     case 0: 
-                        this.setState({
-                            next: null,
-                            prev: { 
+                        if (index + 1 < this.props.articleList.length){
+                            prev = { 
                                 title: this.props.articleList[index+1].title,
                                 url: this.props.articleList[index+1].articleId,
-                            }
-                        });
+                            };
+                        }
                         break;
+
                     case this.props.articleList.length - 1: 
-                        this.setState({
-                            next: { 
+                        if (index - 1 >= 0){
+                            next = {
                                 title: this.props.articleList[index-1].title,
                                 url: this.props.articleList[index-1].articleId,
-                            },
-                            prev: null
-                        });
-                        break;
-                    default:
-                        this.setState({
-                            next: { 
-                                title: this.props.articleList[index-1].title,
-                                url: this.props.articleList[index-1].articleId,
-                            },
-                            prev: { 
-                                title: this.props.articleList[index+1].title,
-                                url: this.props.articleList[index+1].articleId,
                             }
                         }
-                    );
+                        break;
+                        
+                    default:
+                        if (index + 1 < this.props.articleList.length){
+                            prev = { 
+                                title: this.props.articleList[index+1].title,
+                                url: this.props.articleList[index+1].articleId,
+                            };
+                        }
+                        if (index - 1 >= 0){
+                            next = {
+                                title: this.props.articleList[index-1].title,
+                                url: this.props.articleList[index-1].articleId,
+                            }
+                        }
+                        break;
+                }
+                if (this.state.prev !== prev){
+                    this.setState({ prev });
+                }
+                if (this.state.next !== next){
+                    this.setState({ next });
                 }
 
             ReactDOM.findDOMNode(this).scrollIntoView( {behavior: "smooth", block: "start"} );
@@ -86,20 +94,19 @@ class ReadArticle extends React.Component{
 
     componentDidMount(){
         ReactDOM.findDOMNode(this).scrollIntoView( {behavior: "smooth", block: "start"} );
-
-        // if (this.props.articleList && this.props.articleList.length === 0){
-        //     this.props.getArticleList(this.props.searchQuery);
-        // }
     }
 
 
     render(){
         if (!this.props.articleDetails) return (<div className="article-details"></div>)
         
+        const homeURL = this.props.searchQuery.length > 0 
+                        ? `/search?q=${this.props.searchQuery}`
+                        : '/';
         return (
             <React.Fragment>
                 <div className="article-details">
-                    <Link className="home-btn" to="/"> Home </Link>
+                    <Link className="home-btn" to={homeURL}> Home </Link>
                     <h2>
                         {this.props.articleDetails.title} 
                         {

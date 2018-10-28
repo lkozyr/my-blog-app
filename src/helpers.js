@@ -38,7 +38,7 @@ const generateRandomIndex = (maxIndex) => {
 }
 
 export const generateRandomIndexesSet = (maxIndex = 0, length = 3, exclude) => {
-    if (maxIndex === 0){
+    if (maxIndex === 0 || maxIndex - 1 < length){
         return [];
     }
     const indexes = [];

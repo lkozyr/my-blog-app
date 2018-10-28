@@ -6,7 +6,6 @@ import SearchField from './SearchField';
 
 class ArticleList extends React.Component {
 
-
     componentDidMount(){
         this.props.getArticleList(this.props.searchQuery);
         if (this.props.location.pathname === '/search'){
@@ -14,9 +13,20 @@ class ArticleList extends React.Component {
             const query = url.searchParams.get('q'); 
             this.props.setSearchQuery(query);
         }
+        else{
+            this.props.setSearchQuery('');
+        }
     }
 
     componentDidUpdate(prevProps){
+        if (this.props.location.pathname !== prevProps.location.pathname){
+            const location = this.props.location.pathname;
+            if (location === '/'){
+                this.props.setSearchQuery('');
+                return;
+            }
+        }
+
         if (prevProps.searchQuery !== this.props.searchQuery){
             this.props.getArticleList(this.props.searchQuery);
             if (this.props.searchQuery.length > 0){
