@@ -9,11 +9,22 @@ class ArticleList extends React.Component {
 
     componentDidMount(){
         this.props.getArticleList(this.props.searchQuery);
+        if (this.props.location.pathname === '/search'){
+            const url = new URL(window.location.href);
+            const query = url.searchParams.get('q'); 
+            this.props.setSearchQuery(query);
+        }
     }
 
     componentDidUpdate(prevProps){
         if (prevProps.searchQuery !== this.props.searchQuery){
             this.props.getArticleList(this.props.searchQuery);
+            if (this.props.searchQuery.length > 0){
+                this.props.history.push(`/search?q=${this.props.searchQuery}`);
+            }
+            else{
+                this.props.history.push('/');
+            }
         }
     }
 
@@ -44,6 +55,14 @@ class ArticleList extends React.Component {
                     searchQuery={this.props.searchQuery}
                     setSearchQuery={this.props.setSearchQuery}/>
 
+                {
+                    this.props.searchQuery.length > 0
+                    ? <p className="total-found">
+                        Articles found: {this.props.articleList.length}
+                     </p>
+                    : null
+                }
+                
                 <ul>
                 {
                     this.props.articleList.map((item, i) => 

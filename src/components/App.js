@@ -23,6 +23,10 @@ class App extends Component {
 					<Route 
 						exact path="/" 
 						component={CCArticleList} />
+
+					<Route 
+						path="/search" 
+						component={CCArticleList} />
 				
 					<Route
 						path="/new"

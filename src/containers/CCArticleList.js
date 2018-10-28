@@ -32,8 +32,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getArticleList: (searchQuery) => dispatch(asyncGetArticlesActionCreator(searchQuery) ),
 
-        setSearchQuery: (query) => {
-            console.log('CCHEader: query:', query);
+        setSearchQuery: (query) => { 
             dispatch(actions.setSearchQuery(query))
         },
         

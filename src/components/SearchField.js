@@ -12,15 +12,19 @@ class SearchField extends React.Component{
         };
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.searchQuery !== this.props.searchQuery){
+            this.setState({ searchInput: this.props.searchQuery });
+        }
+    }
+
     handleSearchInputChange = (e) => {
         this.setState({ searchInput: e.target.value});
-        //console.log(e.target.value);
     }
 
 
     handleSearchStart = (e) => {
         e.preventDefault();
-        console.log('this.state.searchInput', this.state.searchInput);
         this.props.setSearchQuery(this.state.searchInput);
     }
 
@@ -31,7 +35,6 @@ class SearchField extends React.Component{
                 <div className="search-form">
                     <input 
                         type="text" 
-                         
                         value={this.state.searchInput} 
                         onChange={this.handleSearchInputChange}/>
                     <button type="submit"><img src={searchIcon} alt="search" /></button>
