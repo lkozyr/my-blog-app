@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import './article-list.css';
 import ArticleExcerpt from'./ArticleExcerpt';
@@ -16,6 +17,7 @@ class ArticleList extends React.Component {
         else{
             this.props.setSearchQuery('');
         }
+        ReactDOM.findDOMNode(this).scrollIntoView( {behavior: "smooth", block: "start"} );
     }
 
     componentDidUpdate(prevProps){
@@ -25,6 +27,13 @@ class ArticleList extends React.Component {
                 this.props.setSearchQuery('');
                 return;
             }
+        }
+        if ((this.props.location.pathname === '/search') 
+            && (this.props.location.search !== prevProps.location.search)){
+                const url = new URL(window.location.href);
+                const query = url.searchParams.get('q'); 
+                this.props.setSearchQuery(query);
+                ReactDOM.findDOMNode(this).scrollIntoView( {behavior: "smooth", block: "start"} );
         }
 
         if (prevProps.searchQuery !== this.props.searchQuery){

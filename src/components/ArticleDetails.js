@@ -71,7 +71,7 @@ class ArticleDetails extends React.Component{
             this.props.editArticleResult === 0){
                 const articleId = this.props.location.pathname.replace(`/${this.state.mode}/`, '');
                 const thisComponent = this;
-                //console.log('redirect happens!');
+
                 window.setTimeout(function(){
                     thisComponent.setState({ mode: 'read'});
                     thisComponent.props.history.push(`/read/${articleId}`);
@@ -124,19 +124,3 @@ class ArticleDetails extends React.Component{
 
 export default ArticleDetails;
 
-
-
-/*
-    addComment={this.props.addComment}
-    addCommentResult={this.props.addCommentResult}
-    articleComments={this.props.articleComments}
-    articleList={this.props.articleList}
-    getArticleComments={this.props.getArticleComments}
-    getArticleList={this.props.getArticleList}
-    handleLoginClick={this.props.handleLoginClick} 
-    location={this.props.location}
-    match={this.props.match}
-    user={this.props.user}
-    searchQuery={this.props.searchQuery}
-    articleDetails={this.props.articleDetails}
-*/

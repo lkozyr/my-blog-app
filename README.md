@@ -145,12 +145,10 @@ npm start
  ## Nice to have features:
 
  - Add 'Stars' info to every article (aka 'Likes')
- - Tags should be parsed and clickable
  - Add teaser image to show in the articles list
  - Add logic for 'isPublished' checkbox
  - Login with FB, Twitter, username and password
  - Add prop types
  - Add pagination / lazyload
- - search results page should have its own URL (/search?q=cat)
  - set search query to local storage
  - add loader (for getArticles, getArticleDetails)

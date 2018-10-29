@@ -21,11 +21,7 @@
     color: #07124e;
     font-size: 18px;
 }
-.tags{
-    color: #3c4352;
-    font-size: 14px;
-    padding: 10px 0;
-}
+
 .form-buttons{
     display: grid;
     grid-template-columns: auto auto;

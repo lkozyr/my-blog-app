@@ -7,6 +7,7 @@ import {
     dateStampToDate,
     generateRandomIndexesSet 
 } from '../helpers';
+import Tags from './Tags';
 import editIcon from '../assets/img/edit.svg';
 import AddCommentForm from './AddCommentForm';
 import PreviousNextNav from './PreviousNextNav';
@@ -126,7 +127,7 @@ class ReadArticle extends React.Component{
                     <p className="text"
                        dangerouslySetInnerHTML={{__html: decodeURI(this.props.articleDetails.text) }}
                     ></p>
-                    <p className="tags">{this.props.articleDetails.tags}</p>
+                    <Tags tags={this.props.articleDetails.tags} />
                 </div>
 
                 <PreviousNextNav 

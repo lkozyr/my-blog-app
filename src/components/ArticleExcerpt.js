@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './article-excerpt.css';
 import { dateStampToDate } from '../helpers';
+import Tags from './Tags';
 
 const ArticleExcerpt = (props) => {
 
@@ -63,7 +64,7 @@ const ArticleExcerpt = (props) => {
                     decodeURI(props.article.text.replace(/&nbsp;/g, " ")).replace(/<\/?[^>]+(>|$)/g, '').substring(0, 170)
                 }...</p>
                 
-                <p className="tags">Tags: {props.article.tags}</p>
+                <Tags tags={props.article.tags} />
 
             </li>
         </div>

@@ -1,0 +1,21 @@
+.tags{
+    color: rgb(60, 67, 82);
+    padding: 20px 0 0 0;
+}
+.tags ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+.tags li{
+    padding: 2px 5px 1px 0;
+}
+.tags li a{
+    border-radius: 2px;
+    color: rgb(60, 67, 82);
+    font-size: 14px;
+    padding: 3px;
+    text-decoration: none;
+}
+.tags li a:hover{
+    background:rgb(229, 243, 235);
+}
