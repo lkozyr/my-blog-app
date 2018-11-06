@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './search-field.css';
 import searchIcon from '../assets/img/search.svg';
 
@@ -44,5 +45,9 @@ class SearchField extends React.Component{
     } 
 }
 
+SearchField.propTypes = {
+    searchQuery:        PropTypes.string,
+    setSearchQuery:     PropTypes.func.isRequired,
+}
 
 export default SearchField;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './header.css';
 
@@ -27,6 +28,13 @@ const Header = (props) => {
 
         </header>
     ); 
+}
+
+Header.propTypes = {
+    checkUserLogin:     PropTypes.func.isRequired,
+    handleLoginClick:   PropTypes.func.isRequired,
+    handleLogoutClick:  PropTypes.func.isRequired,
+    user:               PropTypes.object,
 }
 
 export default Header;

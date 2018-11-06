@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import hamburgerImage from '../assets/img/hamb.svg';
 
@@ -110,6 +111,13 @@ class User extends React.Component {
                 </React.Fragment>
                 );
     }
+}
+
+User.propTypes = {
+    checkUserLogin:     PropTypes.func.isRequired,
+    handleLoginClick:   PropTypes.func.isRequired,
+    handleLogoutClick:  PropTypes.func.isRequired,
+    user:               PropTypes.object,
 }
   
 export default User;

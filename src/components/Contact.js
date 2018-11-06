@@ -5,7 +5,7 @@ import twImage from '../assets/img/tw.svg';
 import ghImage from '../assets/img/gh.svg';
 import emImage from '../assets/img/em.svg';
 
-const Contact = (props) => {
+const Contact = () => {
 
     return (
         <div className="contact">

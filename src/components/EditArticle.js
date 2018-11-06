@@ -1,10 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './edit-article.css';
 
 import { Link } from 'react-router-dom';
-
 import { titleToURL } from '../helpers';
-
 import RichTextEditor from 'react-rte';
 
 
@@ -246,6 +245,16 @@ class EditArticle extends React.Component {
                 </React.Fragment>
             );
     }
+}
+
+EditArticle.propTypes = {
+    articleDetails:         PropTypes.object,
+    editArticle:            PropTypes.func.isRequired,
+    editArticleResult:      PropTypes.number,
+    location:               PropTypes.object,
+    searchQuery:            PropTypes.string,
+    switchToReadMode:       PropTypes.func,
+    user:                   PropTypes.object,
 }
 
 export default EditArticle;

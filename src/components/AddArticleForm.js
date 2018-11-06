@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './add-article-form.css';
 
 import { Link } from 'react-router-dom';
@@ -131,6 +132,12 @@ class AddArticleForm extends React.Component {
         }
         else return null;
     }
+}
+
+AddArticleForm.propTypes = {
+    addArticle:         PropTypes.func.isRequired,
+    addArticleResult:   PropTypes.number,
+    user:               PropTypes.object,
 }
 
 export default AddArticleForm;

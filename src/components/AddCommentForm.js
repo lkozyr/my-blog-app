@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './add-comment-form.css';
 
 
@@ -87,7 +88,13 @@ class AddCommentForm extends React.Component{
             </form>
         ); 
     }
-    
+}
+
+AddCommentForm.propTypes = {
+    addComment:         PropTypes.func.isRequired,
+    addCommentResult:   PropTypes.number,
+    articleId:          PropTypes.string.isRequired,
+    userEmail:          PropTypes.string.isRequired,
 }
 
 export default AddCommentForm;

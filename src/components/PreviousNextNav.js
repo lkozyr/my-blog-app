@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './previous-next-nav.css';
 
@@ -41,6 +42,11 @@ const PreviousNextNav = (props) => {
             </div>
         </nav>
     ); 
+}
+
+PreviousNextNav.propTypes = {
+    next:       PropTypes.object,
+    previous:   PropTypes.object,
 }
 
 export default PreviousNextNav;

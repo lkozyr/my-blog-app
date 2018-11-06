@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 import './article-list.css';
 import ArticleExcerpt from'./ArticleExcerpt';
@@ -97,6 +98,17 @@ class ArticleList extends React.Component {
             </div>
         ); 
     }
+}
+
+ArticleList.propTypes = {
+    articleList:            PropTypes.array,
+    deleteArticle:          PropTypes.func.isRequired,
+    getArticleList:         PropTypes.func.isRequired,
+    history:                PropTypes.object,
+    location:               PropTypes.object,
+    searchQuery:            PropTypes.string,
+    setSearchQuery:         PropTypes.func.isRequired,
+    user:                   PropTypes.object,
 }
 
 export default ArticleList;

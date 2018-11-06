@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './article-excerpt.css';
 import { dateStampToDate } from '../helpers';
@@ -69,6 +70,12 @@ const ArticleExcerpt = (props) => {
             </li>
         </div>
     ); 
+}
+
+ArticleExcerpt.propTypes = {
+    article:        PropTypes.object,
+    deleteArticle:  PropTypes.func.isRequired,
+    isUserAdmin:    PropTypes.bool,
 }
 
 export default ArticleExcerpt;

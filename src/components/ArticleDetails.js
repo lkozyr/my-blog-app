@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReadArticle from './ReadArticle'; 
 import EditArticle from './EditArticle';
 
@@ -120,6 +121,26 @@ class ArticleDetails extends React.Component{
             return( <div> Smth went wrong </div>);
         }
     }
+}
+
+ArticleDetails.propTypes = {
+    addComment:             PropTypes.func.isRequired,
+    addCommentResult:       PropTypes.number,
+    articleComments:        PropTypes.array,
+    articleDetails:         PropTypes.object,
+    articleList:            PropTypes.array,
+    editArticle:            PropTypes.func.isRequired,
+    editArticleResult:      PropTypes.number,
+    getOneArticleDetails:   PropTypes.func.isRequired,
+    getArticleComments:     PropTypes.func.isRequired,
+    getArticleList:         PropTypes.func.isRequired,
+    handleLoginClick:       PropTypes.func.isRequired,
+    history:                PropTypes.object,
+    location:               PropTypes.object,
+    match:                  PropTypes.object,
+    searchQuery:            PropTypes.string,
+    switchToReadMode:       PropTypes.func,
+    user:                   PropTypes.object,
 }
 
 export default ArticleDetails;

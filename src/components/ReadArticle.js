@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import './read-article.css';
 import { Link } from 'react-router-dom';
@@ -183,6 +184,19 @@ class ReadArticle extends React.Component{
             </React.Fragment>
         ); 
     }
+}
+
+ReadArticle.propTypes = {
+    addComment:             PropTypes.func.isRequired,
+    addCommentResult:       PropTypes.number,
+    articleComments:        PropTypes.array,
+    articleDetails:         PropTypes.object,
+    articleList:            PropTypes.array,
+    handleLoginClick:       PropTypes.func.isRequired,
+    location:               PropTypes.object,
+    match:                  PropTypes.object,
+    searchQuery:            PropTypes.string,
+    user:                   PropTypes.object,
 }
 
 export default ReadArticle;
