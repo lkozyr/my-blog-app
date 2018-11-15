@@ -149,7 +149,7 @@ class EditArticle extends React.Component {
                 <div className="edit-article-form">
                     <div className="sorry">
                         You cannot edit articles in this blog.&nbsp;
-                        <Link to={homeURL}>Home</Link>
+                        <Link className="home-btn" to={homeURL}>Home</Link>
                     </div>
                 </div>
             );

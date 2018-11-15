@@ -98,7 +98,7 @@ npm install
     },
   "likes" : {
     "-LNbreQ5BmU2eUaaYrYc" : "sometestemail@someserver.com, anothertestuser@someserver.com",
-    "-LNfWGAHFXtTLsLFo-zR" : "anothertestuser@someserver.com",
+    "-LNfWGAHFXtTLsLFo-zR" : "anothertestuser@someserver.com"
   }
 }
 ```
@@ -123,7 +123,7 @@ npm install
       ".write": "false"
     },
     "users": {
-      ".read": "auth != null",
+      ".read": "true",
       ".write": "auth != null",
       ".indexOn": "email"
     },

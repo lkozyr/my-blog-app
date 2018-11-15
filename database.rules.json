@@ -15,9 +15,14 @@
       ".write": "false"
     },
     "users": {
-      ".read": "auth != null",
+      ".read": "true",
       ".write": "auth != null",
       ".indexOn": "email"
+    },
+    "likes": {
+      ".read": "true",
+      ".write": "auth !== null",
+      ".indexOn": "id"
     }
   }
 }
