@@ -73,3 +73,26 @@ time.date{
 .edit-icon:hover{
     background: rgba(141, 206, 168, 0.26);
 }
+.article-stats{
+    display: grid;
+    grid-template-columns: 70px 70px;
+}
+.comments-info{
+    display: grid;
+    grid-template-columns: 32px 30px;
+    margin-top: 1.2em;
+    place-items: center;
+}
+.comments-info img{
+    width: 32px;
+}
+.comments-info span{
+    color: rgb(78, 97, 136);
+    font-size: 15px;
+    justify-self: left;
+}
+hr{
+    border: solid 1px lightgray;
+    border-style: ridge;
+    margin: 2em 0 0 0;
+}

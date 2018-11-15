@@ -1,0 +1,14 @@
+.likes{
+    align-items: center;
+    display: grid;
+    grid-template-columns: 30px 30px;
+    margin-top: 1em;
+}
+.likes img{
+    width: 30px;
+}
+.likes span{
+    color: rgb(78, 97, 136);
+    font-size: 15px;
+    padding: 5px 0 0 0;
+}

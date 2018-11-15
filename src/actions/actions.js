@@ -10,6 +10,8 @@ export const GET_ARTICLE_DETAILS = 'GET_ARTICLE_DETAILS';
 export const GET_ARTICLE_COMMENTS = 'GET_ARTICLE_COMMENTS';
 export const ADD_COMMENT_RESULT = 'ADD_COMMENT_RESULT';
 export const EDIT_ARTICLE_RESULT = 'EDIT_ARTICLE_RESULT';
+export const GET_ARTICLE_LIKES = 'GET_ARTICLE_LIKES';
+export const LIKE_ARTICLE = 'LIKE_ARTICLE';
 
 export const userLogin = (user) => ({
     type:           USER_LOGIN,
@@ -68,4 +70,14 @@ export const addArticleComment = (addResult) => ({
 export const editArticle = (editResult) => ({
     type:           EDIT_ARTICLE_RESULT,
     editResult,
+});
+
+export const getArticleLikes = (likes) => ({
+    type:           GET_ARTICLE_LIKES,
+    articleLikes:   likes,
+});
+
+export const likeArticle = (likesStr) => ({
+    type:           LIKE_ARTICLE,
+    likesStr,
 });

@@ -1,0 +1,5 @@
+.interactions{
+    display: grid;
+    grid-template-columns: 60px 70px;
+    place-items: center;
+}

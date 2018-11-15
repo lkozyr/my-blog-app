@@ -16,40 +16,42 @@ class App extends Component {
 		return (
 		<div className="app">
 
-			<CCHeader />
+			<div className="content-wrapper">
+				<CCHeader />
 
-			<section className="main">
-				<Switch>
-					<Route 
-						exact path="/" 
-						component={CCArticleList} />
+				<section className="main">
+					<Switch>
+						<Route 
+							exact path="/" 
+							component={CCArticleList} />
 
-					<Route 
-						path="/search" 
-						component={CCArticleList} />
-				
-					<Route
-						path="/new"
-						component={CCNewArticle} />
+						<Route 
+							path="/search" 
+							component={CCArticleList} />
+					
+						<Route
+							path="/new"
+							component={CCNewArticle} />
 
-					<Route
-						path="/read"
-						component={CCArticleDetails} />
+						<Route
+							path="/read"
+							component={CCArticleDetails} />
 
-					<Route
-						path="/edit"
-						component={CCArticleDetails} />
+						<Route
+							path="/edit"
+							component={CCArticleDetails} />
 
-					<Route
-						path="/about"
-						component={About} />
+						<Route
+							path="/about"
+							component={About} />
 
-					<Route
-						path="/contact"
-						component={Contact} />
+						<Route
+							path="/contact"
+							component={Contact} />
 
-				</Switch>
-			</section>
+					</Switch>
+				</section>
+			</div>
 
 			<Footer />
 			

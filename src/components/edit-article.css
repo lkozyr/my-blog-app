@@ -31,3 +31,12 @@
 .confirm-cancel button:hover{
     background: rgb(238, 242, 252);
 }
+.sorry{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    min-height: 76vh;
+    text-align: center;
+    width: 100%;
+}

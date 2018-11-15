@@ -1,5 +1,7 @@
 
 # Simple blog web application.
+
+Created for learning purposes.
 Check [live demo](https://liu-blog-app.firebaseapp.com).
 
 
@@ -8,7 +10,7 @@ Check [live demo](https://liu-blog-app.firebaseapp.com).
 
  - React
  - Redux, Redux Thunk
- - Firebase
+ - [Firebase](https://console.firebase.google.com) - DB and Hosting
  - React Rich Text Editor ([npm package](https://www.npmjs.com/package/react-rte))
 
 
@@ -16,16 +18,17 @@ Check [live demo](https://liu-blog-app.firebaseapp.com).
 ## Features:
 
  - Everyone can read articles.
- - Only authenticated users can comment articles.
+ - Only authenticated users can comment and like articles.
  - Only admin user can add new articles, edit or delete existing ones.
  - Rich text editor allows to create formatted article text.
  - Article can contain an image (image URL is required).
  - User can search articles containing specific keywords.
+ - Show user friendly error message if network connection is not established.
 
 
 
 
-## Authentications options available so far:
+## Authentication options available so far:
 
  - Google authentication
 
@@ -92,11 +95,50 @@ npm install
       "displayName" : "Admin user",
       "email" : "sometestemail@someserver.com",
       "photoURL" : "https://openclipart.org/image/2400px/svg_to_png/277086/Female-Avatar-2.png"
-    }
+    },
+  "likes" : {
+    "-LNbreQ5BmU2eUaaYrYc" : "sometestemail@someserver.com, anothertestuser@someserver.com",
+    "-LNfWGAHFXtTLsLFo-zR" : "anothertestuser@someserver.com",
+  }
 }
 ```
 
-4. Create empty *blog-app/.env* file and copy your firebase DB settings into it:
+4. Set Firebase DB rules according to the sample:
+
+```
+{
+  "rules": {
+    "articles": {
+      ".read": "true",
+      ".write": "auth !== null && auth.email == 'sometestuser@someserver.com'",
+      ".indexOn": "id"
+    },
+    "comments": {
+      ".read": "true",
+      ".write": "auth != null",
+      ".indexOn": "articleId"
+    },
+    "admin": {
+      ".read": "auth != null",
+      ".write": "false"
+    },
+    "users": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": "email"
+    },
+    "likes": {
+      ".read": "true",
+      ".write": "auth !== null",
+      ".indexOn": "id"
+    }
+  }
+}
+
+```
+
+
+5. Create empty *blog-app/.env* file and copy your firebase DB settings into it:
 
 ```
 REACT_APP_FIREBASE_API_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -108,7 +150,7 @@ REACT_APP_FIREBASE_MESSAGING_SENDER_ID=XXXXXXXXXXXXX
 
 ```
 
-5. Run dev server and compile code:
+6. Run dev server and compile code:
 
 ```
 npm start
@@ -134,6 +176,10 @@ npm start
  - [5](https://www.iconfinder.com/icons/104501/bird_twitter_icon)
  - [6](https://www.iconfinder.com/icons/394189/code_github_repository_icon)
  - [7](https://www.iconfinder.com/icons/1814108/email_envenlope_letter_mail_icon)
+ - [8](https://www.iconfinder.com/icons/2534298/approved_hand_like_thumbs_up_icon)
+ - [9](https://www.iconfinder.com/icons/2180513/facebook_fb_like_thumbs_up_icon)
+ - [10](https://www.iconfinder.com/icons/2180494/comment_facebook_message_notification_icon)
+ - [11](https://www.iconfinder.com/icons/2534334/chat_comment_inbox_message_icon)
 
 
 2. Fonts: 
@@ -144,11 +190,9 @@ npm start
 
  ## Nice to have features:
 
- - Add 'Stars' info to every article (aka 'Likes')
  - Add teaser image to show in the articles list
  - Add logic for 'isPublished' checkbox
  - Login with FB, Twitter, username and password
- - Add prop types
  - Add pagination / lazyload
  - set search query to local storage
  - add loader (for getArticles, getArticleDetails)

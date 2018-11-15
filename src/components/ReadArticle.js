@@ -9,6 +9,7 @@ import {
     generateRandomIndexesSet 
 } from '../helpers';
 import Tags from './Tags';
+import Interactions from './Interactions';
 import editIcon from '../assets/img/edit.svg';
 import AddCommentForm from './AddCommentForm';
 import PreviousNextNav from './PreviousNextNav';
@@ -20,11 +21,22 @@ class ReadArticle extends React.Component{
     constructor (props) {
         super(props);
 
+        this.addCommentFormRef = React.createRef();
+
         this.state = {
             prev: null,
             next: null,
             randomArticleIndexes: [],
         }; 
+    }
+
+    scrollToAddCommentForm = () => {
+        ReactDOM.findDOMNode(this.addCommentFormRef.current).querySelector('textarea').focus();
+        ReactDOM.findDOMNode(this.addCommentFormRef.current).scrollIntoView( {behavior: "smooth", block: "start"} );
+    }
+
+    likeArticle = (likesStr) => {
+        this.props.likeArticle(this.props.articleDetails.id, likesStr);
     }
     
     componentDidUpdate(prevProps) {
@@ -129,6 +141,20 @@ class ReadArticle extends React.Component{
                        dangerouslySetInnerHTML={{__html: decodeURI(this.props.articleDetails.text) }}
                     ></p>
                     <Tags tags={this.props.articleDetails.tags} />
+
+                    <hr />
+
+                    <div className="article-stats">
+                        <Interactions
+                            likes={this.props.articleLikes}
+                            user={this.props.user}
+                            count={ this.props.articleComments && this.props.articleComments.length}
+                            isClickable={true}
+                            likeArticle={this.likeArticle}
+                            addCommentAction={this.scrollToAddCommentForm} />
+                        
+                    </div>
+
                 </div>
 
                 <PreviousNextNav 
@@ -143,6 +169,7 @@ class ReadArticle extends React.Component{
                     this.props.user
                     ?
                         <AddCommentForm 
+                            ref={this.addCommentFormRef}
                             articleId={this.props.location.pathname.replace('/read/', '')}
                             userEmail={this.props.user.email}
                             addComment={this.props.addComment}
@@ -154,10 +181,8 @@ class ReadArticle extends React.Component{
                         </div>
                 }
 
-                <div className="article-details">
-                    Comments: { this.props.articleComments && this.props.articleComments.length}
-                </div>
                 <div className="article-comments"> 
+                    Comments:
                     <ul>
                     {
                         this.props.articleComments && this.props.articleComments.map((comment, i) => 

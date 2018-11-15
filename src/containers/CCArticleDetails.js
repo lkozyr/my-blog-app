@@ -8,11 +8,12 @@ import {
     getArticles,
     getArticleDetails, 
     getArticleComments, 
+    getArticleLikes,
     addComment, 
     userLogin, 
     isUserAdmin, 
     editArticle,
-     
+    likeArticle,
 } from '../firebase/firebaseAPI';
 
 const mapStateToProps = (state) => {
@@ -22,6 +23,7 @@ const mapStateToProps = (state) => {
         articleList:        state.articleList,
         articleDetails:     state.articleDetails,
         articleComments:    state.articleComments,
+        articleLikes:       state.articleLikes,
         addCommentResult:   state.addCommentResult,
         editArticleResult:  state.editArticleResult,
     };
@@ -57,12 +59,26 @@ const asyncEditArticleActionCreator = (id, article) => {
     }
 }
 
+const asyncLikeArticleActionCreator = (articleId, likesStr) => {
+    return (dispatch) => {
+        likeArticle(articleId, likesStr, dispatch, actions.likeArticle);
+    }
+}
+
+const asyncLikesActionCreator = (id) => {
+    return (dispatch) => {
+        getArticleLikes(id, dispatch, actions.getArticleLikes);
+    }
+}
+
 
 const mapDispatchToProps = (dispatch) => {
     return {
         getArticleList: (searchQuery) => dispatch(asyncGetArticlesActionCreator(searchQuery) ),
 
         getOneArticleDetails: (articleId) => dispatch(asyncDetailsActionCreator(articleId) ),
+
+        getArticleLikes: (id) => dispatch(asyncLikesActionCreator(id) ),
 
         getArticleComments: (articleId) => dispatch(asyncCommentsActionCreator(articleId) ),
 
@@ -82,6 +98,10 @@ const mapDispatchToProps = (dispatch) => {
             if (user.isAdmin){
                 dispatch(asyncEditArticleActionCreator(id, article));
             }
+        },
+
+        likeArticle: (articleId, likesStr) => {
+            dispatch(asyncLikeArticleActionCreator(articleId, likesStr));
         }
     }
 }

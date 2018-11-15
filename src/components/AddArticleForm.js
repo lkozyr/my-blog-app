@@ -58,7 +58,7 @@ class AddArticleForm extends React.Component {
 
     render() {
 
-        if (this.props.user && !this.props.user.isAdmin){
+        if (!(this.props.user && this.props.user.isAdmin)){
             return (
                 <div className="add-article-form">
                     <div className="sorry">
@@ -72,7 +72,7 @@ class AddArticleForm extends React.Component {
             return (
                 <React.Fragment>
                     <form 
-                        className="add-article-form" 
+                        className="add-article" 
                         onSubmit={this.handleAddArticleClick}
                         ref={this.newArticleFormRef}>
 

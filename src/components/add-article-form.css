@@ -1,7 +1,10 @@
 .add-article-form{
-    min-height: 80vh;
+    min-height: 76vh;
+}
+.add-article{
     padding: 20px 30px;
 }
+.add-article > div,
 .add-article-form > div{
     padding: 10px 0;
 }
@@ -14,6 +17,7 @@ div.text-input{
     color: rgb(33, 51, 88);
     min-height: 430px;
 }
+.add-article button,
 .add-article-form button{
     background: none;
     border: solid 1px rgba(63, 81, 181, 0.73);
@@ -22,6 +26,7 @@ div.text-input{
     cursor: pointer;
     font-size: 16px;
 }
+.add-article button:hover,
 .add-article-form button:hover{
     background: rgba(63, 81, 181, 0.07);
 }

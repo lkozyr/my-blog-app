@@ -23,7 +23,7 @@ describe('<App />', () => {
     expect(Object.keys(component.props())).toContain('children');
 
     expect(component.props()['className']).toBe('app');
-    expect(component.props()['children'].length).toBe(3);
+    expect(component.props()['children'].length).toBe(2);
   })
   
 })

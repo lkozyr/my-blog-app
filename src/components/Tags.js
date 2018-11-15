@@ -7,7 +7,7 @@ import './tags.css';
 class Tags extends React.Component {
 
     parseTagsString = (str) => {
-        const tagsStr = this.props.tags.trim();
+        const tagsStr = str.trim();
         return tagsStr.replace(/\s/g, ',').replace(/,,/g, ',').split(',');
     }
 

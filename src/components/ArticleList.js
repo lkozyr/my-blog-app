@@ -90,7 +90,7 @@ class ArticleList extends React.Component {
                             key={'article'+i}
                             article={item}
                             deleteArticle={this.deleteArticle}
-                            isUserAdmin={this.props.user && this.props.user.isAdmin}/>
+                            user={this.props.user} />
                     )
                 }
                 </ul>

@@ -62,6 +62,15 @@ class ArticleDetails extends React.Component{
             }
         }
 
+        if ((this.props.articleDetails && !prevProps.articleDetails ) ||
+            (this.props.articleDetails && prevProps.articleDetails && 
+             this.props.articleDetails.id !== prevProps.articleDetails.id)){
+
+            if (this.state.mode === 'read'){ 
+                this.props.getArticleLikes(this.props.articleDetails.id);
+            }
+        }
+
         // get articleList if it's missing
         if (!(this.props.articleList && this.props.articleList.length > 0)){
             this.props.getArticleList(this.props.searchQuery);
@@ -96,8 +105,10 @@ class ArticleDetails extends React.Component{
                     addCommentResult={this.props.addCommentResult}
                     articleComments={this.props.articleComments}
                     articleDetails={this.props.articleDetails}
+                    articleLikes={this.props.articleLikes}
                     articleList={this.props.articleList}
                     handleLoginClick={this.props.handleLoginClick} 
+                    likeArticle={this.props.likeArticle}
                     location={this.props.location}
                     match={this.props.match}
                     searchQuery={this.props.searchQuery}
@@ -128,6 +139,7 @@ ArticleDetails.propTypes = {
     addCommentResult:       PropTypes.number,
     articleComments:        PropTypes.array,
     articleDetails:         PropTypes.object,
+    articleLikes:           PropTypes.array,
     articleList:            PropTypes.array,
     editArticle:            PropTypes.func.isRequired,
     editArticleResult:      PropTypes.number,
@@ -136,6 +148,7 @@ ArticleDetails.propTypes = {
     getArticleList:         PropTypes.func.isRequired,
     handleLoginClick:       PropTypes.func.isRequired,
     history:                PropTypes.object,
+    likeArticle:            PropTypes.func.isRequired,
     location:               PropTypes.object,
     match:                  PropTypes.object,
     searchQuery:            PropTypes.string,

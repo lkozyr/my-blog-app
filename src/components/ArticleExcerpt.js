@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './article-excerpt.css';
 import { dateStampToDate } from '../helpers';
 import Tags from './Tags';
+//import Likes from './Likes';
+import Interactions from './Interactions';
 
 const ArticleExcerpt = (props) => {
 
@@ -28,7 +30,7 @@ const ArticleExcerpt = (props) => {
                         </Link>
 
                         {
-                            props.isUserAdmin 
+                            props.user && props.user.isAdmin 
                             ?
                                 <React.Fragment>
                                     <label htmlFor={`deleteChk${props.article.articleId}`} title="Delete article">&times;</label>
@@ -66,6 +68,12 @@ const ArticleExcerpt = (props) => {
                 }...</p>
                 
                 <Tags tags={props.article.tags} />
+                
+                <Interactions
+                            likes={props.article.likes}
+                            user={props.user}
+                            count={props.article.commentsCount}
+                            isClickable={false}/>
 
             </li>
         </div>
@@ -75,7 +83,7 @@ const ArticleExcerpt = (props) => {
 ArticleExcerpt.propTypes = {
     article:        PropTypes.object,
     deleteArticle:  PropTypes.func.isRequired,
-    isUserAdmin:    PropTypes.bool,
+    user:           PropTypes.object,
 }
 
 export default ArticleExcerpt;

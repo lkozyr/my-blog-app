@@ -37,6 +37,44 @@ export const isUserAdmin = async (user) => {
         );
 }
 
+const getArticlesInteractions = (articlesArray, dispatch, getArticleListAction) => {
+    const promises = [];
+
+    articlesArray.map(article => {
+
+        const likesRef = firebase.database().ref(`likes/${article.id}`);
+        const likesPromise = likesRef.once('value', (snapshot) => {
+
+            const likesStr = snapshot.val(); 
+
+            let likes = [];
+            if (likesStr){
+                likes = likesStr.split(',').map(item => item.trim());
+            }
+            article.likes = likes;
+        });
+
+        const commentsRef = firebase.database().ref('comments').orderByChild('articleId').equalTo(article.articleId);
+        const commentsPromise = commentsRef.on('value', (snapshot) => {
+            const comments = snapshot.val() || {};  
+            const commentsCount = Object.keys(comments).length;
+            article.commentsCount = commentsCount;
+        });
+
+        promises.push(likesPromise);
+        promises.push(commentsPromise);
+
+        return article;
+    });
+
+    Promise
+        .all(promises)
+        .then(() => {
+            // dispatch sorted 'articles' array to redux store by calling it as a callback function
+            return dispatch(getArticleListAction(articlesArray));
+        });
+}
+
 export const getArticles = (searchQuery = '', dispatch, getArticleListAction) => {
     const articlesRef = firebase.database().ref('articles').orderByChild('date');
     articlesRef.on('value', (snapshot) => {
@@ -56,9 +94,12 @@ export const getArticles = (searchQuery = '', dispatch, getArticleListAction) =>
                 item.tags.toLowerCase().includes(searchQuery.toLowerCase()))
             .sort((a, b) => b.date - a.date);
         // dispatch 'articles' array to redux store by calling it as a callback function
-        return dispatch(getArticleListAction(sortedArticles));
+        dispatch(getArticleListAction(sortedArticles));
+
+        return getArticlesInteractions(sortedArticles, dispatch, getArticleListAction);
     });
 }
+
 
 export const addArticle = (article, dispatch, addArticleAction) => {
     let result = null;
@@ -174,9 +215,7 @@ export const editArticle = (id, article, dispatch, editArticleAction) => {
     let result = null;
     const articleRef = firebase.database().ref(`articles/${id}`);
 
-    let updatedArticle = article;
-
-    articleRef.set(updatedArticle,
+    articleRef.set(article,
         (error) => {
             if (error){
                 result = 1;
@@ -186,6 +225,42 @@ export const editArticle = (id, article, dispatch, editArticleAction) => {
             }
             dispatch(editArticleAction(result));
             window.setTimeout(function(){dispatch(editArticleAction(null))}, 2000);
+        }
+    );
+}
+
+export const getArticleLikes = (id, dispatch, getArticleLikesAction) => {
+    const likesRef = firebase.database().ref(`likes/${id}`);
+    likesRef.on('value', (snapshot) => {
+        const likesStr = snapshot.val(); 
+
+        let likes = [];
+        if (likesStr){
+            likes = likesStr.split(',').map(item => item.trim());
+        }
+        return dispatch(getArticleLikesAction(likes));
+    });
+}
+
+export const likeArticle = (id, likesStr, dispatch, likeArticleAction) => {
+    let result = null;
+    const likesRef = firebase.database().ref('likes/');
+
+    const likesArticleRef = firebase.database().ref(`likes/${id}`) || likesRef.push();
+    // if (!likesArticleRef){
+    //     likesArticleRef = likesRef.push();
+    // }
+
+    likesArticleRef.set(likesStr,
+        (error) => {
+            if (error){
+                result = 1;
+            } 
+            else{
+                result = 0;
+            }
+            dispatch(likeArticleAction(result));
+            window.setTimeout(function(){dispatch(likeArticleAction(null))}, 2000);
         }
     );
 }

@@ -8,6 +8,7 @@ const defaultState = {
     deleteArticleResult:    null,
     articleDetails:         null,
     articleComments:        null,
+    articleLikes:           null,
     addCommentResult:       null,
     editArticleResult:      null,
 };
@@ -32,6 +33,11 @@ const reducer = (state = defaultState, action) => {
         articleComments = [...state.articleComments];
     }
 
+    let articleLikes = [];
+    if (state.articleLikes) {
+        articleLikes = [...state.articleLikes];
+    }
+
     const addArticleResult = state.addArticleResult;
     const deleteArticleResult = state.deleteArticleResult;
     const addCommentResult = state.addCommentResult;
@@ -49,6 +55,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult,
             };
@@ -63,6 +70,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult,
             };
@@ -78,6 +86,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult,
             };
@@ -92,6 +101,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult,
             };
@@ -106,6 +116,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult,
             };
@@ -120,6 +131,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult,
             };
@@ -134,6 +146,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult: deleteResult,
                 articleDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult,
             };
@@ -148,6 +161,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails: artDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult,
             };
@@ -162,6 +176,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments: comments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult,
             };
@@ -176,6 +191,7 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult: result,
                 editArticleResult,
             };
@@ -190,8 +206,24 @@ const reducer = (state = defaultState, action) => {
                 deleteArticleResult,
                 articleDetails,
                 articleComments,
+                articleLikes,
                 addCommentResult,
                 editArticleResult: editRes,
+            };
+
+        case actions.GET_ARTICLE_LIKES:
+            const likes = action.articleLikes;
+            return { 
+                user, 
+                searchQuery,
+                articleList,
+                addArticleResult,
+                deleteArticleResult,
+                articleDetails,
+                articleComments,
+                articleLikes:   likes,
+                addCommentResult,
+                editArticleResult,
             };
 
         default:

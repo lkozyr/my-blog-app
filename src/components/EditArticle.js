@@ -144,7 +144,7 @@ class EditArticle extends React.Component {
                         ? `/search?q=${this.props.searchQuery}`
                         : '/';
 
-        if (this.props.user && !this.props.user.isAdmin){
+        if (!(this.props.user && this.props.user.isAdmin)){
             return (
                 <div className="edit-article-form">
                     <div className="sorry">
