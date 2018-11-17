@@ -247,9 +247,6 @@ export const likeArticle = (id, likesStr, dispatch, likeArticleAction) => {
     const likesRef = firebase.database().ref('likes/');
 
     const likesArticleRef = firebase.database().ref(`likes/${id}`) || likesRef.push();
-    // if (!likesArticleRef){
-    //     likesArticleRef = likesRef.push();
-    // }
 
     likesArticleRef.set(likesStr,
         (error) => {
@@ -263,4 +260,12 @@ export const likeArticle = (id, likesStr, dispatch, likeArticleAction) => {
             window.setTimeout(function(){dispatch(likeArticleAction(null))}, 2000);
         }
     );
+}
+
+export const isOnline = (dispatch, setConnectionStatusAction) => {
+    const connectedRef = firebase.database().ref('.info/connected');
+    connectedRef.on('value', function(snapshot) {
+        const snapshotVal = snapshot.val();
+        dispatch(setConnectionStatusAction(snapshotVal));
+    });
 }

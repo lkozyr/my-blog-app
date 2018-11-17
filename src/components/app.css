@@ -5,6 +5,7 @@
 }
 .content-wrapper{
     min-height: 93vh;
+    position:relative;
 }
 .main{
     background: #fdfdfd;

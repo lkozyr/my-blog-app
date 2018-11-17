@@ -1,17 +1,18 @@
 
-export const USER_LOGIN     = 'USER_LOGIN';
-export const USER_LOGOUT    = 'USER_LOGOUT';
-export const SET_ADMIN_PRIVILEDGES = 'SET_ADMIN_PRIVILEDGES';
-export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
-export const GET_ARTICLE_LIST = 'GET_ARTICLE_LIST';
-export const ADD_ARTICLE_RESULT = 'ADD_ARTICLE_RESULT';
-export const DELETE_ARTICLE_RESULT = 'DELETE_ARTICLE_RESULT';
-export const GET_ARTICLE_DETAILS = 'GET_ARTICLE_DETAILS';
-export const GET_ARTICLE_COMMENTS = 'GET_ARTICLE_COMMENTS';
-export const ADD_COMMENT_RESULT = 'ADD_COMMENT_RESULT';
-export const EDIT_ARTICLE_RESULT = 'EDIT_ARTICLE_RESULT';
-export const GET_ARTICLE_LIKES = 'GET_ARTICLE_LIKES';
-export const LIKE_ARTICLE = 'LIKE_ARTICLE';
+export const USER_LOGIN             = 'USER_LOGIN';
+export const USER_LOGOUT            = 'USER_LOGOUT';
+export const SET_ADMIN_PRIVILEDGES  = 'SET_ADMIN_PRIVILEDGES';
+export const SET_SEARCH_QUERY       = 'SET_SEARCH_QUERY';
+export const GET_ARTICLE_LIST       = 'GET_ARTICLE_LIST';
+export const ADD_ARTICLE_RESULT     = 'ADD_ARTICLE_RESULT';
+export const DELETE_ARTICLE_RESULT  = 'DELETE_ARTICLE_RESULT';
+export const GET_ARTICLE_DETAILS    = 'GET_ARTICLE_DETAILS';
+export const GET_ARTICLE_COMMENTS   = 'GET_ARTICLE_COMMENTS';
+export const ADD_COMMENT_RESULT     = 'ADD_COMMENT_RESULT';
+export const EDIT_ARTICLE_RESULT    = 'EDIT_ARTICLE_RESULT';
+export const GET_ARTICLE_LIKES      = 'GET_ARTICLE_LIKES';
+export const LIKE_ARTICLE           = 'LIKE_ARTICLE';
+export const SET_CONNECTION_STATE   = 'SET_CONNECTION_STATE';
 
 export const userLogin = (user) => ({
     type:           USER_LOGIN,
@@ -80,4 +81,9 @@ export const getArticleLikes = (likes) => ({
 export const likeArticle = (likesStr) => ({
     type:           LIKE_ARTICLE,
     likesStr,
+});
+
+export const setConnectionStatus = (connectionState) => ({
+    type:           SET_CONNECTION_STATE,
+    connectionState,
 });

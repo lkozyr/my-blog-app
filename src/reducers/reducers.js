@@ -11,6 +11,7 @@ const defaultState = {
     articleLikes:           null,
     addCommentResult:       null,
     editArticleResult:      null,
+    connectionState:        null,
 };
 
 const reducer = (state = defaultState, action) => {
@@ -42,6 +43,7 @@ const reducer = (state = defaultState, action) => {
     const deleteArticleResult = state.deleteArticleResult;
     const addCommentResult = state.addCommentResult;
     const editArticleResult = state.editArticleResult;
+    const connectionState = state.connectionState;
 
     switch (action.type){
        
@@ -58,6 +60,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
             };
         
         case actions.USER_LOGOUT: 
@@ -73,6 +76,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
             };
 
         case actions.SET_ADMIN_PRIVILEDGES:
@@ -89,6 +93,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
             };
 
         case actions.SET_SEARCH_QUERY:
@@ -104,6 +109,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
             };
 
         case actions.GET_ARTICLE_LIST:
@@ -119,6 +125,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
             };
 
         case actions.ADD_ARTICLE_RESULT:
@@ -134,6 +141,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
             };
 
         case actions.DELETE_ARTICLE_RESULT:
@@ -149,6 +157,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
             };
 
         case actions.GET_ARTICLE_DETAILS:
@@ -164,6 +173,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
             };
 
         case actions.GET_ARTICLE_COMMENTS:
@@ -179,6 +189,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
             };
         
         case actions.ADD_COMMENT_RESULT:
@@ -194,6 +205,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult: result,
                 editArticleResult,
+                connectionState,
             };
 
         case actions.EDIT_ARTICLE_RESULT:
@@ -209,6 +221,7 @@ const reducer = (state = defaultState, action) => {
                 articleLikes,
                 addCommentResult,
                 editArticleResult: editRes,
+                connectionState,
             };
 
         case actions.GET_ARTICLE_LIKES:
@@ -224,6 +237,23 @@ const reducer = (state = defaultState, action) => {
                 articleLikes:   likes,
                 addCommentResult,
                 editArticleResult,
+                connectionState,
+            };
+
+        case actions.SET_CONNECTION_STATE:
+            const connectionStatus = action.connectionState;
+            return { 
+                user, 
+                searchQuery,
+                articleList,
+                addArticleResult,
+                deleteArticleResult,
+                articleDetails,
+                articleComments,
+                articleLikes,
+                addCommentResult,
+                editArticleResult,
+                connectionState: connectionStatus,
             };
 
         default:

@@ -1,0 +1,46 @@
+.connection-state{
+    align-items: center;
+    color: white;
+    display: flex;
+    font-size: 14px;
+    height: 40px;
+    overflow:hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: all 0.5s ease-in;
+    width: 404px;
+}
+.connection-state img{
+    height: 24px;
+    width: 24px;
+}
+.connection-state span{
+    margin: 5px;
+}
+.connection-state button{
+    background: none;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 3px;
+    padding: 0;
+}
+.connection-state button:hover{
+    font-size: 17px;
+    font-weight: bold;
+}
+.conn-hidden{
+    right: -375px;
+}
+.conn-ok{
+    width: 188px;
+}
+.conn-ok-hidden{
+    opacity: 0;
+    right: -160px;
+    top: -50px;
+    transition: right 0.5s ease-out, opacity 4s ease-in, top 4.5s ease-in 4s; 
+}

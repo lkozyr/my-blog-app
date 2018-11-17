@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import './app.css';
 
 import CCHeader from '../containers/CCHeader';
+import CCConnectionState from '../containers/CCConnectionState';
 import CCArticleList from '../containers/CCArticleList';
 import CCNewArticle from '../containers/CCNewArticle';
 import CCArticleDetails from '../containers/CCArticleDetails';
@@ -18,7 +19,8 @@ class App extends Component {
 
 			<div className="content-wrapper">
 				<CCHeader />
-
+				<CCConnectionState />
+				
 				<section className="main">
 					<Switch>
 						<Route 
