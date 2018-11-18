@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import hamburgerImage from '../assets/img/hamb.svg';
 
-import './user.css';
+import './css/user.css';
 
 class User extends React.Component {
     constructor(props){

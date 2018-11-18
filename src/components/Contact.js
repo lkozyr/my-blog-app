@@ -1,5 +1,5 @@
 import React from 'react';
-import './contact.css';
+import './css/contact.css';
 import fbImage from '../assets/img/fb.svg';
 import twImage from '../assets/img/tw.svg';
 import ghImage from '../assets/img/gh.svg';

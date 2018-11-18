@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './article-excerpt.css';
+import './css/article-excerpt.css';
 import { dateStampToDate } from '../helpers';
 import Tags from './Tags';
-//import Likes from './Likes';
 import Interactions from './Interactions';
 
 const ArticleExcerpt = (props) => {

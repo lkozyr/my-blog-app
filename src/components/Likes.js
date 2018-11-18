@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import likeImage from '../assets/img/like.svg';
 import likedImage from '../assets/img/liked.svg';
-import './likes.css';
+import './css/likes.css';
 
 class Likes extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './random-article-suggestions.css';
+import './css/random-article-suggestions.css';
 
 const RandomArticleSuggestions = (props) => {
     if (!(props.articleList && props.articleList.length > 0 && props.randomArticleIndexes.length > 0)){

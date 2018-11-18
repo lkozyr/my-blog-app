@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './add-article-form.css';
+import './css/add-article-form.css';
 
 import { Link } from 'react-router-dom';
 import { titleToURL } from '../helpers';

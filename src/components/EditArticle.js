@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './edit-article.css';
+import './css/edit-article.css';
 
 import { Link } from 'react-router-dom';
 import { titleToURL } from '../helpers';

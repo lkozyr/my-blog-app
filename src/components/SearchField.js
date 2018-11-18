@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './search-field.css';
+import './css/search-field.css';
 import searchIcon from '../assets/img/search.svg';
 
 

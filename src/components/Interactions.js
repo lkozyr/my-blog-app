@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Likes from './Likes';
 import Comments from './Comments';
-import './interactions.css';
+import './css/interactions.css';
 
 class Interactions extends React.Component {
 

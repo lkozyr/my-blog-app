@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './add-comment-form.css';
+import './css/add-comment-form.css';
 
 
 class AddCommentForm extends React.Component{

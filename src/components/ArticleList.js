@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-import './article-list.css';
+import './css/article-list.css';
 import ArticleExcerpt from'./ArticleExcerpt';
 import SearchField from './SearchField';
 

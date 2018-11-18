@@ -6,7 +6,7 @@ message text is changed and after 4 seconds it disappears.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import './connection-state.css';
+import './css/connection-state.css';
 
 import connectionOkImage from '../assets/img/connection_ok.svg';
 import connectionLostImage from '../assets/img/connection_lost.svg';

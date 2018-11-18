@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from "react-router-dom";
-import './app.css';
+import './css/app.css';
 
 import CCHeader from '../containers/CCHeader';
 import CCConnectionState from '../containers/CCConnectionState';

@@ -5,7 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import commentImage from '../assets/img/comment.svg';
 import commentedImage from '../assets/img/commented.svg';
-import './comments.css';
+import './css/comments.css';
 
 class Comments extends React.Component {
 
