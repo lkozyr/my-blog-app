@@ -46,11 +46,9 @@ class AddArticleForm extends React.Component {
         if (prevProps && this.props 
             && this.props.addArticleResult === 0
             && prevProps.addArticleResult === null){
-            //console.log('now clear the article form');
             const component = this;
             window.setTimeout(function(thisComponent = component){
                 thisComponent.newArticleFormRef.current.reset();
-                //console.log('component', thisComponent, thisComponent.newArticleFormRef);
                 thisComponent.setState({value: RichTextEditor.createEmptyValue()});
             }, 1000);
         }

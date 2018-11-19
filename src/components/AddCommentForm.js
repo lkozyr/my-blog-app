@@ -25,7 +25,7 @@ class AddCommentForm extends React.Component{
         e.preventDefault();
 
         const date = Date.now();
-        const text = e.target.children[0].value;
+        const text = this.commentInputRef.current.value;
         const articleId = this.props.articleId;
         const userEmail = this.props.userEmail;
 
