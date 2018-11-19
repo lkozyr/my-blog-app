@@ -1,15 +1,19 @@
 .connection-state{
     align-items: center;
+    background: rgba(33, 51, 88, 0.8);
+    border-radius: 3px;
     color: white;
     display: flex;
     font-size: 14px;
     height: 40px;
     overflow:hidden;
+    padding-left: 3px;
     position: fixed;
     right: 0;
     top: 0;
     transition: all 0.5s ease-in;
     width: 404px;
+    z-index: 500;
 }
 .connection-state img{
     height: 24px;

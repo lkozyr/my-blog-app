@@ -12,17 +12,38 @@ import connectionOkImage from '../assets/img/connection_ok.svg';
 import connectionLostImage from '../assets/img/connection_lost.svg';
 
 class ConnectionState extends React.Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            showConnectionStatePopup: false,
+        };
+    }
 
     componentDidMount(){
-        this.props.checkConnection();
+        window.setTimeout(() => {
+            this.props.checkConnection();
+        }, 3000);
     }
 
     componentDidUpdate(prevProps){
+        if (prevProps.connectionState !== null && this.props.connectionState !== null &&
+            !this.state.showConnectionStatePopup){
+            this.setState({ showConnectionStatePopup: true });
+        }
+        else if (prevProps.connectionState === null && this.props.connectionState !== null &&
+            this.state.showConnectionStatePopup){
+            this.setState({ showConnectionStatePopup: false });
+        }
         if (!prevProps.connectionState && this.props.connectionState){
-            const className = ReactDOM.findDOMNode(this).className;
+            const thisComponent = ReactDOM.findDOMNode(this); 
+            if (!thisComponent) {
+                return;
+            }
+            const className = thisComponent.className;
             if (className.indexOf('conn-ok') > -1){
                 window.setTimeout(() => {
-                    ReactDOM.findDOMNode(this).className = 'connection-state conn-ok conn-ok-hidden';
+                    thisComponent.className = 'connection-state conn-ok conn-ok-hidden';
                 }, 2500);
             }
         }
@@ -37,7 +58,10 @@ class ConnectionState extends React.Component {
     }
 
     render(){
-        if (!this.props.connectionState){
+        /* Since connectionState can be true or false I check whether it exactly equals true or
+            false. Checking 'if (!connectionState)' will not work properly as null value will be
+            also be treated as falsy value, this is not what we need. */
+        if (this.props.connectionState === false && this.state.showConnectionStatePopup){
             return(
                 <div className="connection-state conn-lost">
                     <img 
@@ -49,16 +73,20 @@ class ConnectionState extends React.Component {
                 </div>
             );
         }
-        else return (
-            <div className="connection-state conn-ok">
-                <img 
-                    src={connectionOkImage} 
-                    alt="Connection resumed!" 
-                    title="Connection resumed!"/>
-                <span>Connection resumed!</span>
-                <button onClick={this.closeConnectionStatePopup} title="Close">&times;</button>
-            </div>
-        );
+        else if (this.props.connectionState === true && this.state.showConnectionStatePopup) {
+            return (
+                <div className="connection-state conn-ok">
+                    <img 
+                        src={connectionOkImage} 
+                        alt="Connection resumed!" 
+                        title="Connection resumed!"/>
+                    <span>Connection resumed!</span>
+                    <button onClick={this.closeConnectionStatePopup} title="Close">&times;</button>
+                </div>
+            );
+        }
+        else
+            return (<div className="conn-state conn-ok"></div>);
     }
     
 }
