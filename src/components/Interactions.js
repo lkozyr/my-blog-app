@@ -9,38 +9,33 @@ import Likes from './Likes';
 import Comments from './Comments';
 import './css/interactions.css';
 
-class Interactions extends React.Component {
+const Interactions = (props) => {
 
-    likeArticle = (likesStr) => {
-        this.props.likeArticle(likesStr);
-    }
-
-    render() {
-        return (
-            <div className="interactions">
+    return (
+        <div className="interactions">
             <Likes 
-                likes={this.props.likes}
-                user={this.props.user}
-                isClickable={this.props.isClickable}
-                likeArticle={this.props.likeArticle}/>
+                likes={props.likes}
+                user={props.user}
+                isClickable={props.isClickable}
+                likeArticle={props.likeArticle}/>
 
             <Comments 
-                count={this.props.count} 
-                isClickable={this.props.isClickable}
-                user={this.props.user} 
-                addCommentAction={this.props.addCommentAction}/>
+                count={props.count} 
+                isClickable={props.isClickable}
+                user={props.user} 
+                addCommentAction={props.addCommentAction}/>
         </div>
-        )
-      
-    }
+    )
+
 }
 
 Interactions.propTypes = {
-    count:          PropTypes.number,
-    isClickable:    PropTypes.bool,
-    likes:          PropTypes.array,
-    likeArticle:    PropTypes.func,
-    user:           PropTypes.object,
+    addCommentAction:   PropTypes.func,
+    count:              PropTypes.number,
+    isClickable:        PropTypes.bool,
+    likes:              PropTypes.array,
+    likeArticle:        PropTypes.func,
+    user:               PropTypes.object,
 }
   
 export default Interactions;
