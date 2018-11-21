@@ -24,20 +24,21 @@ class SearchField extends React.Component{
     }
 
 
-    handleSearchStart = (e) => {
+    handleSearchStart(e){
         e.preventDefault();
         this.props.setSearchQuery(this.state.searchInput);
     }
 
     render(){
         return (
-            <form className="search-field" onSubmit={this.handleSearchStart}>
+            <form className="search-field" onSubmit={this.handleSearchStart.bind(this)}>
                 <div>Search:</div>
                 <div className="search-form">
                     <input 
                         type="text" 
                         value={this.state.searchInput} 
-                        onChange={this.handleSearchInputChange}/>
+                        onChange={this.handleSearchInputChange}
+                        aria-label="Search"/>
                     <button type="submit"><img src={searchIcon} alt="search" /></button>
                 </div>
             </form>
