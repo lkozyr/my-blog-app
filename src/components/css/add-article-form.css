@@ -69,3 +69,30 @@ button.danger:hover{
 div.public-DraftEditor-content{
     min-height: 320px;
 }
+
+form.add-article div.confirm-cancel-wrapper{
+    display: block;
+    padding: 0;
+    position: relative;
+    top: -9em;
+}
+
+.confirm-cancel-wrapper:empty{
+    display: none;
+}
+.confirm-cancel{
+    background: rgb(191, 217, 202);
+    border: solid 1px #213358;
+    padding: 20px 30px;
+    position: absolute;
+    width: 100%;
+}
+.confirm-cancel p{
+    text-align: center;
+}
+.confirm-cancel button{
+    background: white;
+}
+.confirm-cancel button:hover{
+    background: rgb(238, 242, 252);
+}

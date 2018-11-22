@@ -13,33 +13,72 @@ class AddArticleForm extends React.Component {
         super(props); 
 
         this.newArticleFormRef = React.createRef();
+        this.titleRef = React.createRef();
+        this.tagsRef = React.createRef();
+        this.publishRef = React.createRef();
 
         this.state = {
-            value: RichTextEditor.createEmptyValue()
+            value: RichTextEditor.createEmptyValue(),
+            showCancelConfirmPopup: false,
         }
     }
 
-    onChange =(value) => {
-        this.setState({value});
+    removeHTMLTags = (str) => {
+        return str
+            .replace(/<[^>]*>/g, ' ')
+            .replace(/\s{2,}/g, ' ')
+            .trim();
+    }
+
+    checkIfChangesMade = () => {
+        const text = 
+            this.titleRef.current.value.trim() + 
+            this.removeHTMLTags(this.state.value.toString('html')) + 
+            this.tagsRef.current.value.trim();
+        
+        return text.length > 0;
+    }
+
+
+    onChange = (value) => {
+        this.setState({
+            value,
+        });
     }
 
     handleAddArticleClick = (e) => {
         e.preventDefault();
         
-
         const date = Date.now();
-        const title = e.target.children[1].children[1].value;
+        const title = this.titleRef.current.value.trim()
         const text = encodeURI(this.state.value.toString('html'));
         const id = titleToURL(title);
         const userEmail = this.props.user.email;
-        const tags = e.target.children[3].children[1].value;
-        const isActive = e.target.children[4].children[0].checked;
+        const tags = this.tagsRef.current.value.trim();
+        const isActive = this.publishRef.current.checked;
 
         this.props.addArticle({ date, title, text, id, userEmail, tags, isActive }, this.props.user);
     }
 
     handleCancelClick = (e) => {
-        // TODO: ask if user is sure, all text will be lost 
+        e.preventDefault();
+
+        if (this.checkIfChangesMade()){
+            this.setState({ showCancelConfirmPopup: true });
+        }
+        else{
+            this.props.history.push('/');
+        }
+    }
+    noCancelClick = (e) => {
+        this.setState({ showCancelConfirmPopup: false });
+    }
+
+    yesCancelClick = (e) => {
+        this.setState({ 
+            showCancelConfirmPopup: false
+         });
+        this.props.history.push('/');
     }
 
     componentDidUpdate(prevProps){
@@ -78,7 +117,13 @@ class AddArticleForm extends React.Component {
                         
                         <div>
                             <label htmlFor="titleInput">Title: </label>
-                            <input className="title-input" type="text" id="titleInput" tabIndex="1" />
+                            <input 
+                                className="title-input" 
+                                type="text" 
+                                id="titleInput" 
+                                tabIndex="1"
+                                ref={this.titleRef}
+                                onChange={this.fieldChanged} />
                         </div>
 
                         <div>
@@ -93,11 +138,20 @@ class AddArticleForm extends React.Component {
                         
                         <div>
                             <label htmlFor="tagsInput">Tags: </label>
-                            <input className="tags-input" type="text" id="tagsInput" tabIndex="3" />
+                            <input 
+                                className="tags-input" 
+                                type="text" 
+                                id="tagsInput" 
+                                tabIndex="3" 
+                                ref={this.tagsRef} />
                         </div>
 
                         <div>
-                            <input type="checkbox" id="enableChk" tabIndex="4"/>
+                            <input 
+                                type="checkbox" 
+                                id="enableChk" 
+                                tabIndex="4" 
+                                ref={this.publishRef}/>
                             <label htmlFor="enableChk">Publish this article </label>
                         </div>
 
@@ -122,6 +176,22 @@ class AddArticleForm extends React.Component {
                                     }
                                 </div>
                         }
+                        </div>
+
+                        <div className="confirm-cancel-wrapper">
+                            {
+                                this.state.showCancelConfirmPopup
+                                ?
+                                <div className="confirm-cancel">
+                                    <p>Do you want to cancel all the changes made?</p>
+                                    <div className="form-buttons">
+                                        <button type="button" onClick={this.noCancelClick}>No</button>
+                                        <button type="button" onClick={this.yesCancelClick}>Yes</button>
+                                    </div>
+                                </div>
+                                : 
+                                    null
+                            }
                         </div>
                     
                     </form>
